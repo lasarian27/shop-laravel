@@ -1,0 +1,28 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+table{
+    width:100%;
+    img{
+        width:100px;
+    }
+}
+.products, .home .card{
+    width: 200px;
+    margin:10px;
+}
+.cart {
+    img{
+        width: 80px;
+    }
+    form{
+        width:100%;
+    }
+}
+
