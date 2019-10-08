@@ -25,10 +25,13 @@ Route::get('/cart/{product}/delete', 'CartController@delete')->name('cart.delete
 Route::get('/cart/{product}/add', 'CartController@add')->name('cart.add');
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
-    Route::get('/products', 'ProductsController@products')->name('products');
-    Route::get('/product', 'ProductsController@create')->name('product.create');
+    Route::resource('/product', 'ProductsController')->only([
+        'create', 'store', 'edit', 'destroy'
+    ]);
+
+    // Posibil sa se poata sterge si asta
     Route::post('/product/{product?}', 'ProductsController@store')->name('product.store');
-    Route::get('/product/{product}/edit', 'ProductsController@edit')->name('product.edit');
-    Route::get('/product/{product}/delete', 'ProductsController@destroy')->name('product.destroy');
+
+    Route::get('/products', 'ProductsController@products')->name('products');
 });
 

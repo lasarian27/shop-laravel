@@ -14,7 +14,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $products = Product::whereIn('id', session()->get('cart', []))->get();
+        $products = Product::query()->whereIn('id', session()->get('cart', []))->get();
 
         return view('cart')->with(compact('products'));
     }
@@ -31,7 +31,7 @@ class CartController extends Controller
             'comments' => 'required'
         ]);
 
-        $products = Product::whereIn('id', session()->get('cart', []))->get();
+        $products = Product::query()->whereIn('id', session()->get('cart', []))->get();
 
         Mail::to('dumacristinel@gmail.com')->send(new CheckoutCart(
             $products,

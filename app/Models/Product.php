@@ -16,7 +16,12 @@ class Product extends Model
 
         static::deleted(function($model){
             /** @var static $model */
-//            $model->deleteImage();
+            $model->deleteImage();
         });
+    }
+
+    private function deleteImage()
+    {
+        unlink(public_path(env('IMAGE_URL')) . '/' . $this->get('image'));
     }
 }
