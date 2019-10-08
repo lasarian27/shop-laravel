@@ -13,7 +13,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('product.index')->with([
+        return view('product')->with([
             'name_page' => __('shop.create.product'),
             'action' => 'product.create',
         ]);
@@ -25,15 +25,14 @@ class ProductsController extends Controller
      * @param Product|null $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request, Product $product = null)
+    public function store(Request $request, Product $product)
     {
         $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
+            'title' => 'required',
+            'description' => 'required',
             'price' => 'required|numeric',
-            'image' => 'required|image|max:2048'
+            'image' => 'image|max:2048'
         ]);
-
 
         $image = $request->file('image');
         $name = time() . '.' . $request['image']->getClientOriginalExtension();
@@ -41,26 +40,25 @@ class ProductsController extends Controller
         $destinationPath = public_path(env('IMAGE_URL'));
 
         if (!empty($product)) {
-            unlink($destinationPath . '/' . $product->image);
+           // unlink($destinationPath . '/' . $product->image);
             $image->move($destinationPath, $name);
 
-            Product::where('id', $product->id)
-                ->update([
-                    'title' => $request->get('title'),
-                    'description' => $request->get('description'),
-                    'price' => $request->get('price'),
-                    'image' => $name
+            $product->fill([
+                $request->get('title'),
+                $request->get('description'),
+                $request->get('price'),
+                $name
                 ]);
+            $product->save();
 
         } else {
             $image->move($destinationPath, $name);
 
-            Product::create([
-                'title' => $request->get('title'),
-                'description' => $request->get('description'),
-                'price' => $request->get('price'),
-                'image' => $name
-            ]);
+            $product->title = $request->get('title');
+            $product->description = $request->get('description');
+            $product->price = $request->get('price');
+            $product->image = $name;
+            $product->save();
 
         }
 
@@ -79,7 +77,7 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('product.index')->with([
+        return view('product')->with([
             'name_page' => __('shop.edit.product'),
             'action' => 'product.store',
             'id' => $product->id,
@@ -101,7 +99,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * Destroy the product and delete the image
+     * Destroy the product
      * @param Product $product
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception

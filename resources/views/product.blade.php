@@ -4,17 +4,13 @@
 
 @section('content')
     <div class="container">
-
         @if(session()->has('message'))
             <div class="alert alert-success">
                 {{ session()->get('message') }}
             </div>
         @endif
-
         <h2 class="text-center">{{ $name_page }}</h2>
-
         <br>
-
         <form method="POST" action="{{ route($action,[ $id ?? null ]) }}" enctype="multipart/form-data">
 
             {{ csrf_field() }}

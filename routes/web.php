@@ -24,14 +24,11 @@ Route::post('/cart', 'CartController@checkout')->name('cart.checkout');
 Route::get('/cart/{product}/delete', 'CartController@delete')->name('cart.delete');
 Route::get('/cart/{product}/add', 'CartController@add')->name('cart.add');
 
-Route::group(['middleware' => ['App\Http\Middleware\Admin']], function () {
+Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/products', 'ProductsController@products')->name('products');
-
-    Route::group(['middleware' => ['auth']], function () {
-        Route::get('/product', 'ProductsController@create')->name('product.create');
-        Route::post('/product/{product?}', 'ProductsController@store')->name('product.store');
-        Route::get('/product/{product}/edit', 'ProductsController@edit')->name('product.edit');
-        Route::get('/product/{product}/delete', 'ProductsController@destroy')->name('product.destroy');
-    });
+    Route::get('/product', 'ProductsController@create')->name('product.create');
+    Route::post('/product/{product?}', 'ProductsController@store')->name('product.store');
+    Route::get('/product/{product}/edit', 'ProductsController@edit')->name('product.edit');
+    Route::get('/product/{product}/delete', 'ProductsController@destroy')->name('product.destroy');
 });
 

@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-       'id', 'title', 'description', 'price', 'image'
+       'title', 'description', 'price', 'image'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function($model){
+            /** @var static $model */
+//            $model->deleteImage();
+        });
+    }
 }

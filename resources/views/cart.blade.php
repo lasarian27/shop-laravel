@@ -10,7 +10,7 @@
                     <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td><img src="{{ env('IMAGE_URL') }}/{{ $product['image'] }}" class="card-img-top"></td>
+                            <td><img src="{{ url(config('app.image_dir') . '/' . $product['image']) }}" class="card-img-top"></td>
                             <td><h5 class="card-title">{{ $product['title'] }}</h5></td>
                             <td><p class="card-text">{{ $product['description'] }}</p></td>
                             <td><p class="card-text">{{ $product['price'] }}$</p></td>
@@ -21,7 +21,9 @@
                 </table>
 
                 <form method="POST" action="{{ route('cart.checkout') }}">
+
                     {{ csrf_field() }}
+
                     <div class="form-group">
                         <label for="name">{{ __('shop.name') }}</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"  name="name" value="{{ old('name') }}">

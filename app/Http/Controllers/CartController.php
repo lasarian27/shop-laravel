@@ -26,25 +26,21 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required',
             'email' => 'required|email',
-            'comments' => 'required|string'
+            'comments' => 'required'
         ]);
 
         $products = Product::whereIn('id', session()->get('cart', []))->get();
 
-        $valueArray = [
-            'products' => $products,
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'comments' => $request->get('comments'),
-        ];
-        try {
-            Mail::to('dumacristinel@gmail.com')->send(new CheckoutCart($valueArray));
-            session()->forget('cart');
-        } catch (\Exception $e) {
-            echo 'Error - ' . $e;
-        }
+        Mail::to('dumacristinel@gmail.com')->send(new CheckoutCart(
+            $products,
+            $request->get('name'),
+            $request->get('email'),
+            $request->get('comments')
+        ));
+
+        session()->forget('cart');
 
         return redirect()->home();
     }
@@ -55,10 +51,11 @@ class CartController extends Controller
      */
     public function delete(Product $product)
     {
-        $cart = session()->get('cart');
-        $cart = array_filter($cart, function ($el) use ($product) {
-            return $el !== $product->id;
-        });
+        $cart = array_diff(
+            session()->get('cart', []),
+            [$product->getKey()]
+        );
+
         session()->put('cart', $cart);
 
         return redirect()->back();
@@ -70,18 +67,7 @@ class CartController extends Controller
      */
     public function add(Product $product)
     {
-
-        $cart = session()->get('cart');
-
-        // if cart is empty then push the first product
-        if (!$cart) {
-            session()->put('cart', [$product->id]);
-
-            return redirect()->back();
-        }
-
-        $cart[] = $product->id;
-        session()->put('cart', $cart);
+        session()->push('cart', $product->getKey());
 
         return redirect()->back();
     }

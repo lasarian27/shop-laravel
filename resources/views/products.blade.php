@@ -4,12 +4,13 @@
 
 @section('content')
     <div class="container products">
+
         @if(count($products))
             <div class="row">
                 @foreach($products as $product)
                     <div class="card">
                         <div class="card-header">
-                            <img src="{{ env('IMAGE_URL') }}/{{ $product['image'] }}" class="card-img-top">
+                            <img src="{{ url(config('app.image_dir') . '/' . $product['image']) }}" class="card-img-top">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $product['title'] }}</h5>
@@ -28,6 +29,5 @@
         @endif
 
         <a href="{{ route('product.create') }}" class="btn btn-primary">{{ __('shop.create.product') }}</a>
-
     </div>
 @endsection
