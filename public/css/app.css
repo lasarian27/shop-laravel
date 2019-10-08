@@ -10652,7 +10652,7 @@ table img {
   width: 100px;
 }
 
-.products,
+.products .card,
 .home .card {
   width: 200px;
   margin: 10px;
