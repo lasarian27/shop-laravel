@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-       'title', 'description', 'price', 'image'
+       'title', 'description', 'price'
     ];
 
     public static function boot()
@@ -22,6 +22,6 @@ class Product extends Model
 
     private function deleteImage()
     {
-        unlink(public_path(env('IMAGE_URL')) . '/' . $this->get('image'));
+        unlink(public_path(config('app.image_dir')) . '/' . $this->id . config('app.image_extension'));
     }
 }

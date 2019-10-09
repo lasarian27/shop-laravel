@@ -10666,3 +10666,7 @@ table img {
   width: 100%;
 }
 
+.products .card-footer {
+  display: inline-flex;
+}
+

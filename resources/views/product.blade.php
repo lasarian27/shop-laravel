@@ -11,6 +11,7 @@
         @endif
         <h2 class="text-center">{{ $name_page }}</h2>
         <br>
+
         <form method="POST" action="{{ route($action,[ $id ?? null ]) }}" enctype="multipart/form-data">
 
             {{ csrf_field() }}

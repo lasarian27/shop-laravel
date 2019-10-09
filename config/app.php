@@ -229,6 +229,7 @@ return [
     ],
 
     'image_dir' => env('IMAGE_DIR'),
-
+    'image_extension' => env('IMAGE_EXTENSION'),
+    'mail_manager' => env('MAIL_MANAGER')
 
 ];

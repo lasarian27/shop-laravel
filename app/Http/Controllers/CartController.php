@@ -33,7 +33,7 @@ class CartController extends Controller
 
         $products = Product::query()->whereIn('id', session()->get('cart', []))->get();
 
-        Mail::to('dumacristinel@gmail.com')->send(new CheckoutCart(
+        Mail::to(config('app.mail_manager'))->send(new CheckoutCart(
             $products,
             $request->get('name'),
             $request->get('email'),

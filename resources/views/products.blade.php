@@ -10,7 +10,7 @@
                 @foreach($products as $product)
                     <div class="card">
                         <div class="card-header">
-                            <img src="{{ url(config('app.image_dir') . '/' . $product['image']) }}" class="card-img-top">
+                            <img src="{{ url(config('app.image_dir') . '/' . $product['id'] . config('app.image_extension')) }}" class="card-img-top">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $product['title'] }}</h5>
@@ -18,8 +18,12 @@
                             <h2 class="card-text text-center">{{ $product['price'] }}$</h2>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="{{ route('product.edit', $product['id']) }}" class="btn btn-info">{{ __('shop.edit') }}</a>
-                            <a href="{{ route('product.destroy', [$product['id']]) }}" class="btn btn-danger">{{ __('shop.delete') }}</a>
+                            <a href="{{ route('product.edit', $product['id']) }}" class="btn btn-info col">{{ __('shop.edit') }}</a>
+                            <form action="{{ route('product.destroy', [$product['id']]) }}" method="POST" class="col">
+                                @method('DELETE')
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-danger">{{ __('shop.delete') }}</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

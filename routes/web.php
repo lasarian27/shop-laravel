@@ -26,10 +26,8 @@ Route::get('/cart/{product}/add', 'CartController@add')->name('cart.add');
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('/product', 'ProductsController')->only([
-        'create', 'store', 'edit', 'destroy'
+        'create', 'edit', 'destroy'
     ]);
-
-    // Posibil sa se poata sterge si asta
     Route::post('/product/{product?}', 'ProductsController@store')->name('product.store');
 
     Route::get('/products', 'ProductsController@products')->name('products');

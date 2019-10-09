@@ -10,7 +10,7 @@
                 @foreach($products as $product)
                     <div class="card">
                         <div class="card-header">
-                            <img src="{{ url(config('app.image_dir') . '/' . $product['image']) }}" class="card-img-top">
+                            <img src="{{ url(config('app.image_dir') . '/' . $product['id'] . config('app.image_extension')) }}" class="card-img-top">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $product['title'] }}</h5>

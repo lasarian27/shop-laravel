@@ -18,7 +18,7 @@ class ProductsController extends Controller
     {
         return view('product')->with([
             'name_page' => __('shop.create.product'),
-            'action' => 'product.create',
+            'action' => 'product.store',
         ]);
     }
 
@@ -34,29 +34,18 @@ class ProductsController extends Controller
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'image' => 'image|max:2048'
+            'image' => 'required|image|max:2048'
         ]);
-
-        $image = $request->file('image');
-        $name = $product->getKey() . '.' . $request['image']->getClientOriginalExtension();
-
-        $destinationPath = public_path(env('IMAGE_URL'));
-        $image->move($destinationPath, $name);
-
-/*        $product->fill([
-            $request->get('title'),
-            $request->get('description'),
-            $request->get('price'),
-            $product->getKey() . '.' . $request['image']->getClientOriginalExtension()
-        ]);
-        $product->save();*/
 
         $product->title = $request->get('title');
         $product->description = $request->get('description');
         $product->price = $request->get('price');
-        $product->image = $name;
         $product->save();
 
+        $image = $request->file('image');
+
+        $name = $product['id'] . '.' . $request['image']->getClientOriginalExtension();
+        $image->move(public_path(config('app.image_dir')), $name);
 
         return back()->with([
             'message' => 'success',
@@ -76,10 +65,10 @@ class ProductsController extends Controller
         return view('product')->with([
             'name_page' => __('shop.edit.product'),
             'action' => 'product.store',
-            'id' => $product->get('id'),
-            'title' => $product->get('title'),
-            'description' => $product->get('description'),
-            'price' => $product->get('price'),
+            'id' => $product->id,
+            'title' => $product->title,
+            'description' => $product->description,
+            'price' => $product->price,
         ]);
     }
 
