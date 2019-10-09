@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Models\Product;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -38,6 +39,7 @@ class ProductsController extends Controller
         ]);
 
         $product->title = $request->get('title');
+        $product->user_id = Auth::id();
         $product->description = $request->get('description');
         $product->price = $request->get('price');
         $product->save();

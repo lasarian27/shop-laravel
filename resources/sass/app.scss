@@ -9,6 +9,7 @@
 
 table{
     width:100%;
+    text-align: center;
     img{
         width:100px;
     }
@@ -17,7 +18,7 @@ table{
     width: 200px;
     margin:10px;
 }
-.cart {
+.cart, .profile {
     img{
         width: 80px;
     }
@@ -27,5 +28,18 @@ table{
 }
 
 .products .card-footer{
-    display: inline-flex;
+    p{
+        font-size: 12px;
+        margin: 0;
+    }
+}
+
+.user-roles{
+    display: -webkit-inline-box;
+    p{
+        background: white;
+        padding: 0px 5px;
+        margin: 0 5px;
+        border-radius: 5px;
+    }
 }

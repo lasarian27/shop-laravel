@@ -1,14 +1,21 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $table = 'products';
+
     protected $fillable = [
-       'title', 'description', 'price'
+       'user_id' ,'title', 'description', 'price'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 
     public static function boot()
     {

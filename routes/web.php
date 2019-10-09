@@ -24,12 +24,20 @@ Route::post('/cart', 'CartController@checkout')->name('cart.checkout');
 Route::get('/cart/{product}/delete', 'CartController@delete')->name('cart.delete');
 Route::get('/cart/{product}/add', 'CartController@add')->name('cart.add');
 
-Route::group(['middleware' => ['auth', 'admin']], function () {
-    Route::resource('/product', 'ProductsController')->only([
-        'create', 'edit', 'destroy'
-    ]);
-    Route::post('/product/{product?}', 'ProductsController@store')->name('product.store');
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['admin']], function () {
+        Route::resource('/product', 'ProductsController')->only([
+            'create', 'edit', 'destroy'
+        ]);
+        Route::post('/product/{product?}', 'ProductsController@store')->name('product.store');
 
-    Route::get('/products', 'ProductsController@products')->name('products');
+        Route::get('/products', 'ProductsController@products')->name('products');
+    });
+
+    Route::get('/profile/{name}', 'HomeController@profile')->name('profile');
+    Route::post('/profile/{user}', 'HomeController@address')->name('profile.address');
+    Route::post('/profile/{name}/role', 'HomeController@role')->name('profile.role');
+
+    Route::get('/roles', 'HomeController@roles')->name('roles');
+    Route::post('/roles', 'HomeController@saveNewRole')->name('role.save');
 });
-

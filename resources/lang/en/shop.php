@@ -39,5 +39,9 @@ return [
     "link.sent" => "A fresh verification link has been sent to your email address.",
     "verification.link" => "Before proceeding, please check your email for a verification link.",
     "link.fail" => "If you did not receive the email",
-    "request.link" => "click here to request another"
+    "request.link" => "click here to request another",
+    "profile" => "Profile",
+    "address" => "Address field",
+    "role.field" => "Insert a role",
+    "roles" => "Roles"
 ];

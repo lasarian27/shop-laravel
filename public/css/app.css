@@ -10646,6 +10646,7 @@ a.text-dark:focus {
 
 table {
   width: 100%;
+  text-align: center;
 }
 
 table img {
@@ -10658,15 +10659,29 @@ table img {
   margin: 10px;
 }
 
-.cart img {
+.cart img,
+.profile img {
   width: 80px;
 }
 
-.cart form {
+.cart form,
+.profile form {
   width: 100%;
 }
 
-.products .card-footer {
-  display: inline-flex;
+.products .card-footer p {
+  font-size: 12px;
+  margin: 0;
+}
+
+.user-roles {
+  display: -webkit-inline-box;
+}
+
+.user-roles p {
+  background: white;
+  padding: 0px 5px;
+  margin: 0 5px;
+  border-radius: 5px;
 }
 

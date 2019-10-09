@@ -18,12 +18,16 @@
                             <h2 class="card-text text-center">{{ $product['price'] }}$</h2>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="{{ route('product.edit', $product['id']) }}" class="btn btn-info col">{{ __('shop.edit') }}</a>
-                            <form action="{{ route('product.destroy', [$product['id']]) }}" method="POST" class="col">
-                                @method('DELETE')
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger">{{ __('shop.delete') }}</button>
-                            </form>
+                            <div class="row">
+                                <a href="{{ route('product.edit', $product['id']) }}" class="btn btn-info col">{{ __('shop.edit') }}</a>
+                                <form action="{{ route('product.destroy', [$product['id']]) }}" method="POST" class="col">
+                                    @method('DELETE')
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-danger">{{ __('shop.delete') }}</button>
+                                </form>
+                                <p class="text-center">Created by {{ $product->user->name . " - " . $product->created_at->diffForHumans() }}</p>
+                            </div>
+
                         </div>
                     </div>
                 @endforeach

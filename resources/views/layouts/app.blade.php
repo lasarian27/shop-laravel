@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/shop.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -66,6 +67,12 @@
                                 @if (Auth::user()->isAdmin())
                                     <a class="dropdown-item" href="{{ route('products') }}">
                                         {{ __('shop.products') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('profile', [Auth::user()->name]) }}">
+                                        {{ __('shop.profile') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('roles') }}">
+                                        {{ __('shop.roles') }}
                                     </a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('cart') }}">
