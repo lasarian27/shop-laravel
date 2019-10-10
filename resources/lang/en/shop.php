@@ -33,7 +33,6 @@ return [
     "name" => "Name",
     "password.confirmation" => "Confirm Password",
     "empty.db" => "No products found in db",
-    "empty.cart" => "No products found in cart",
     "create.product" => "Create a product",
     "verify.email" => "Verify Your Email Address",
     "link.sent" => "A fresh verification link has been sent to your email address.",
@@ -43,5 +42,16 @@ return [
     "profile" => "Profile",
     "address" => "Address field",
     "role.field" => "Insert a role",
-    "roles" => "Roles"
+    "roles" => "Roles",
+    "created.by" => "Created by ",
+    "account.details" => "Account Details",
+    "user.address" => "User address with hasOne",
+    "products.by.address" => "Products by Address with hasManyThrough",
+    "products.from.user" => "Products from user with hasMany",
+    "role.db" => "Add New Role in DB",
+    "users.roles" => "Manage User roles with belongsToMany",
+    "user" => "User",
+    "role" => "Role",
+    "in.db" => "In db now"
+
 ];

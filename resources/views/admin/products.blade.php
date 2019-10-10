@@ -25,7 +25,7 @@
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger">{{ __('shop.delete') }}</button>
                                 </form>
-                                <p class="text-center">Created by {{ $product->user->name . " - " . $product->created_at->diffForHumans() }}</p>
+                                <p class="text-center">{{ __('shop.created.by') . $product->user->name . " - " . $product->created_at->diffForHumans() }}</p>
                             </div>
 
                         </div>

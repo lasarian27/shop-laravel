@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="roles container">
-        <h4>Add New Role in DB</h4>
+        <h4>{{ __('shop.role.db') }}</h4>
 
         <form action="{{ route('role.save') }}" method="POST">
             {{ csrf_field() }}
@@ -22,10 +22,10 @@
         </form>
         <br>
 
-        <h4>Manage User roles</h4>
+        <h4>{{ __('shop.users.roles') }}</h4>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text" for="inputUser">User</label>
+                <label class="input-group-text" for="inputUser">{{ __('user') }}</label>
             </div>
             <select class="custom-select" id="inputUser">
                 @foreach($users as $index => $user)
@@ -36,7 +36,7 @@
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text" for="inputRoles">Role</label>
+                <label class="input-group-text" for="inputRoles">{{ __('role') }}</label>
             </div>
             <select class="custom-select" id="inputRoles">
                 @foreach($roles as $index => $role)
@@ -49,14 +49,14 @@
             <button id="submit-role" class="btn btn-success">{{ __('shop.submit') }}</button>
         </div>
 
-        <h3 class="text-center">In db now</h3>
+        <h3 class="text-center">{{ __('shop.in.db') }}</h3>
 
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">User</th>
-                <th scope="col">Email</th>
-                <th scope="col">Roles</th>
+                <th scope="col">{{ __('user') }}</th>
+                <th scope="col">{{ __('email') }}</th>
+                <th scope="col">{{ __('roles') }}</th>
             </tr>
             </thead>
             <tbody>

@@ -17,6 +17,9 @@ table{
 .products .card, .home .card{
     width: 200px;
     margin:10px;
+    .card-header{
+        min-height: 180px;
+    }
 }
 .cart, .profile {
     img{

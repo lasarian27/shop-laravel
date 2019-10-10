@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\Product;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,13 +33,15 @@ class HomeController extends Controller
     {
         $user = User::query()
             ->where('name', $name)
+            ->with('address')
             ->firstOrFail();
 
-        $products = $user->products;
+        $address = Address::query()->where('id', $user->address->id)->with('products')->firstOrFail();
 
-        return view('profile')->with([
-            'products' => $products,
+        return view('admin.profile')->with([
+            'products' => $user->products,
             'user' => $user,
+            'products_by_address' => $address->products
         ]);
     }
 
@@ -54,7 +56,7 @@ class HomeController extends Controller
             'address' => 'required',
         ]);
 
-        Address::updateOrCreate(
+        $user->address()->updateOrCreate(
             ['user_id' => $user->id],
             ['country' => $request->get('address')]
         );
@@ -70,7 +72,7 @@ class HomeController extends Controller
         $roles = Role::all();
         $users = User::all();
 
-        return view('roles')->with([
+        return view('admin.roles')->with([
             'roles' => $roles,
             'users' => $users
         ]);
@@ -104,7 +106,7 @@ class HomeController extends Controller
             'user' => 'required'
         ]);
 
-        $user =  User::query()
+        $user = User::query()
             ->where('id', $request->get('user'))
             ->firstOrFail();
 

@@ -12,4 +12,11 @@ class Address extends Model
         'user_id' ,'country'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function products()
+    {
+        return $this->hasManyThrough('App\Models\Product', 'App\Models\User');
+    }
 }

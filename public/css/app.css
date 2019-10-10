@@ -10659,6 +10659,11 @@ table img {
   margin: 10px;
 }
 
+.products .card .card-header,
+.home .card .card-header {
+  min-height: 180px;
+}
+
 .cart img,
 .profile img {
   width: 80px;

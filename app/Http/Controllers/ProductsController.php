@@ -17,7 +17,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('product')->with([
+        return view('admin.product')->with([
             'name_page' => __('shop.create.product'),
             'action' => 'product.store',
         ]);
@@ -64,7 +64,7 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('product')->with([
+        return view('admin.product')->with([
             'name_page' => __('shop.edit.product'),
             'action' => 'product.store',
             'id' => $product->id,
@@ -82,7 +82,7 @@ class ProductsController extends Controller
     {
         $products = Product::all();
 
-        return view('products')->with(compact('products'));
+        return view('admin.products')->with(compact('products'));
     }
 
     /**
