@@ -24,7 +24,7 @@ Route::post('/cart', 'CartController@checkout')->name('cart.checkout');
 Route::get('/cart/{product}/delete', 'CartController@delete')->name('cart.delete');
 Route::get('/cart/{product}/add', 'CartController@add')->name('cart.add');
 
-Route::group(['middleware' => ['auth', 'admin']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::resource('/product', 'ProductsController')->only([
         'create', 'edit', 'destroy'
     ]);

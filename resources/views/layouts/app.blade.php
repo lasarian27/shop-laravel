@@ -64,17 +64,19 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('shop.logout') }}
                                 </a>
-                                @if (Auth::user()->isAdmin())
-                                    <a class="dropdown-item" href="{{ route('products') }}">
-                                        {{ __('shop.products') }}
-                                    </a>
+
+                                @can('isAdmin')
                                     <a class="dropdown-item" href="{{ route('profile', [Auth::user()->name]) }}">
                                         {{ __('shop.profile') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('products') }}">
+                                        {{ __('shop.products') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('roles') }}">
                                         {{ __('shop.roles') }}
                                     </a>
-                                @endif
+                                @endcan
+
                                 <a class="dropdown-item" href="{{ route('cart') }}">
                                     {{ __('shop.cart') }}
                                 </a>

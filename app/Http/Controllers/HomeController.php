@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAddress;
+use App\Http\Requests\StoreRole;
+use App\Http\Requests\UpdateRole;
 use App\Models\Address;
 use App\Models\Product;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {
@@ -28,6 +31,7 @@ class HomeController extends Controller
     /**
      * @param $name
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function profile($name)
     {
@@ -36,7 +40,11 @@ class HomeController extends Controller
             ->with('address')
             ->firstOrFail();
 
-        $address = Address::query()->where('id', $user->address->id)->with('products')->firstOrFail();
+        $this->authorize('view', $user);
+
+        $address = Address::query()->where('id', $user->address->id)->with(['products' => function ($query) {
+            $query->orderBy('created_at', 'asc');
+        }])->firstOrFail();
 
         return view('admin.profile')->with([
             'products' => $user->products,
@@ -46,15 +54,14 @@ class HomeController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StoreAddress $request
      * @param User $user
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function address(Request $request, User $user)
+    public function address(StoreAddress $request, User $user)
     {
-        $request->validate([
-            'address' => 'required',
-        ]);
+        $this->authorize('update', $user->address());
 
         $user->address()->updateOrCreate(
             ['user_id' => $user->id],
@@ -69,6 +76,10 @@ class HomeController extends Controller
      */
     public function roles()
     {
+        if (Gate::denies('isAdmin')) {
+            return redirect()->home();
+        }
+
         $roles = Role::all();
         $users = User::all();
 
@@ -79,36 +90,30 @@ class HomeController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StoreRole $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function saveNewRole(Request $request)
+    public function saveNewRole(StoreRole $request)
     {
-        $request->validate([
-            'role' => 'required',
-        ]);
-
-        $role = new Role();
-        $role->name = $request->get('role');
-        $role->save();
+        (new Role())->fill([
+            'name' => $request->get('role')
+        ])->save();
 
         return back();
     }
 
     /**
-     * @param Request $request
+     * @param UpdateRole $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function role(Request $request)
+    public function role(UpdateRole $request)
     {
-        $request->validate([
-            'role' => 'required',
-            'user' => 'required'
-        ]);
-
         $user = User::query()
             ->where('id', $request->get('user'))
             ->firstOrFail();
+
+        $this->authorize('update', $user);
 
         $user->roles()->attach($request->get('role'));
 

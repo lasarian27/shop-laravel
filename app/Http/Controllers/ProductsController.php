@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProduct;
 use App\Models\Product;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -25,24 +26,21 @@ class ProductsController extends Controller
 
     /**
      * Create or update a product
-     * @param Request $request
+     * @param StoreProduct $request
      * @param Product|null $product
      * @return RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store(Request $request, Product $product)
+    public function store(StoreProduct $request, Product $product)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'image' => 'required|image|max:2048'
-        ]);
+        $this->authorize('update', $product);
 
-        $product->title = $request->get('title');
-        $product->user_id = Auth::id();
-        $product->description = $request->get('description');
-        $product->price = $request->get('price');
-        $product->save();
+        $product->fill([
+            'title' => $request->get('title'),
+            'user_id' => Auth::id(),
+            'description' => $request->get('description'),
+            'price' => $request->get('price')
+        ])->save();
 
         $image = $request->file('image');
 
@@ -61,9 +59,12 @@ class ProductsController extends Controller
      * Edit a product
      * @param Product $product
      * @return Factory|View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Product $product)
     {
+        $this->authorize('view', $product);
+
         return view('admin.product')->with([
             'name_page' => __('shop.edit.product'),
             'action' => 'product.store',
@@ -75,12 +76,15 @@ class ProductsController extends Controller
     }
 
     /**
-     * Return all products from db
      * @return Factory|View
      */
     public function products()
     {
-        $products = Product::all();
+        if (Gate::denies('isAdmin')) {
+            return redirect()->home();
+        }
+
+        $products = Product::query()->orderBy('created_at', 'desc')->get();
 
         return view('admin.products')->with(compact('products'));
     }
@@ -93,6 +97,8 @@ class ProductsController extends Controller
      */
     public function destroy(Product $product)
     {
+        $this->authorize('delete', $product);
+
         $product->delete();
         return back();
     }
