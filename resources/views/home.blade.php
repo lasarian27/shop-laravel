@@ -18,7 +18,11 @@
                             <h2 class="card-text text-center">{{ $product['price'] }}$</h2>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="{{ route('cart.add', $product['id']) }}" class="btn btn-primary">{{ __('shop.add') }}</a>
+                            <form action="{{ route('cart.update', $product['id']) }}" method="POST">
+                                @method('PUT')
+                                {{ csrf_field() }}
+                                <button class="btn btn-primary">{{ __('shop.add') }}</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

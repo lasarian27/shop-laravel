@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Arr;
 
 class User extends Authenticatable
 {
@@ -51,6 +53,46 @@ class User extends Authenticatable
      */
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Role', 'user_roles');
+        return $this->belongsToMany('App\Models\Role', (new UserRole)->getTable())->withTimestamps();
+    }
+
+    /**
+     * @param string|array $role
+     * @return bool
+     */
+    public function hasAnyRole($role)
+    {
+        $role = Arr::wrap($role);
+
+        /** @var Collection $roles */
+        $roles = $this->roles;
+
+        return (bool)$roles->filter(function ($item) use ($role) {
+            return in_array($item->key, $role);
+        })->first();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->hasAnyRole(Role::ROLE_ADMIN);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isModerator()
+    {
+        return $this->hasAnyRole(Role::ROLE_MODERATOR);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUser()
+    {
+        return $this->hasAnyRole(Role::ROLE_USER);
     }
 }

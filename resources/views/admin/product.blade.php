@@ -12,7 +12,12 @@
         <h2 class="text-center">{{ $name_page }}</h2>
         <br>
 
-        <form method="POST" action="{{ route($action,[ $id ?? null ]) }}" enctype="multipart/form-data">
+            @if($action === "product.store")
+                <form method="POST" action="{{ route($action,[ $id ?? null ]) }}" enctype="multipart/form-data">
+                @elseif($action === "product.update")
+                <form method="POST" action="{{ route($action,[ $id ?? null ]) }}" enctype="multipart/form-data">
+                    @method('PATCH')
+            @endif
 
             {{ csrf_field() }}
 

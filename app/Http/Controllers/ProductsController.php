@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProduct;
 use App\Models\Product;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -29,12 +30,9 @@ class ProductsController extends Controller
      * @param StoreProduct $request
      * @param Product|null $product
      * @return RedirectResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(StoreProduct $request, Product $product)
     {
-        $this->authorize('update', $product);
-
         $product->fill([
             'title' => $request->get('title'),
             'user_id' => Auth::id(),
@@ -54,6 +52,10 @@ class ProductsController extends Controller
         ]);
     }
 
+    public function update(StoreProduct $request, Product $product)
+    {
+        return $this->store($request, $product);
+    }
 
     /**
      * Edit a product
@@ -67,7 +69,7 @@ class ProductsController extends Controller
 
         return view('admin.product')->with([
             'name_page' => __('shop.edit.product'),
-            'action' => 'product.store',
+            'action' => 'product.update',
             'id' => $product->id,
             'title' => $product->title,
             'description' => $product->description,
@@ -80,7 +82,7 @@ class ProductsController extends Controller
      */
     public function products()
     {
-        if (Gate::denies('isAdmin')) {
+        if (!Gate::any(['isAdmin', 'isModerator'], Auth::user())) {
             return redirect()->home();
         }
 

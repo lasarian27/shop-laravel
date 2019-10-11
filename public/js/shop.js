@@ -95,9 +95,9 @@
 
 $('#submit-role').click(function () {
   $.ajax({
-    type: "POST",
+    type: "PATCH",
     dataType: 'JSON',
-    url: '/profile/' + $("#navbarDropdown").text().trim() + '/role',
+    url: '/role/' + $("#inputUser").find('option:selected').attr('value'),
     data: {
       "role": $("#inputRoles").find('option:selected').attr('value'),
       "user": $("#inputUser").find('option:selected').attr('value')

@@ -2,35 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubmitCart;
 use App\Mail\CheckoutCart;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Show the cart
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $products = Product::query()->whereIn('id', session()->get('cart', []))->get();
-
         return view('cart')->with(compact('products'));
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * Checkout
+     *
+     * @param SubmitCart $request
+     * @return \Illuminate\Http\Response
      */
-    public function checkout(Request $request)
+    public function store(SubmitCart $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'comments' => 'required'
-        ]);
-
         $products = Product::query()->whereIn('id', session()->get('cart', []))->get();
 
         Mail::to(config('app.mail_manager'))->send(new CheckoutCart(
@@ -46,28 +43,32 @@ class CartController extends Controller
     }
 
     /**
-     * @param Product $product
-     * @return \Illuminate\Http\RedirectResponse
+     * Update the specified resource in storage.
+     *
+     * @param Integer $id
+     * @return \Illuminate\Http\Response
      */
-    public function delete(Product $product)
+    public function update($id)
     {
-        $cart = array_diff(
-            session()->get('cart', []),
-            [$product->getKey()]
-        );
-
-        session()->put('cart', $cart);
+        session()->push('cart', $id);
 
         return redirect()->back();
     }
 
     /**
-     * @param Product $product
-     * @return \Illuminate\Http\RedirectResponse
+     * Remove a product from the cart
+     *
+     * @param Integer $id
+     * @return \Illuminate\Http\Response
      */
-    public function add(Product $product)
+    public function destroy($id)
     {
-        session()->push('cart', $product->getKey());
+        $cart = array_diff(
+            session()->get('cart', []),
+            [$id]
+        );
+
+        session()->put('cart', $cart);
 
         return redirect()->back();
     }

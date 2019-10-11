@@ -5,8 +5,7 @@
 @section('content')
     <div class="roles container">
         <h4>{{ __('shop.role.db') }}</h4>
-
-        <form action="{{ route('role.save') }}" method="POST">
+        <form action="{{ route('role.store') }}" method="POST">
             {{ csrf_field() }}
             <label for="address">{{ __('shop.role.field') }}</label>
             <div class="form-group">

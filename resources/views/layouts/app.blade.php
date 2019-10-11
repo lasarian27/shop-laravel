@@ -65,19 +65,28 @@
                                     {{ __('shop.logout') }}
                                 </a>
 
-                                @can('isAdmin')
+                                @if(Auth::user()->isAdmin())
+                                    <a class="dropdown-item" href="{{ route('profile', [Auth::user()->name]) }}">
+                                        {{ __('shop.profile') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('role.index') }}">
+                                        {{ __('shop.roles') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('products') }}">
+                                        {{ __('shop.products') }}
+                                    </a>
+                                @endif
+
+                                @if(Auth::user()->isModerator())
                                     <a class="dropdown-item" href="{{ route('profile', [Auth::user()->name]) }}">
                                         {{ __('shop.profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('products') }}">
                                         {{ __('shop.products') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('roles') }}">
-                                        {{ __('shop.roles') }}
-                                    </a>
                                 @endcan
 
-                                <a class="dropdown-item" href="{{ route('cart') }}">
+                                <a class="dropdown-item" href="{{ route('cart.index') }}">
                                     {{ __('shop.cart') }}
                                 </a>
 
@@ -88,6 +97,7 @@
                             </div>
                         </li>
                     @endguest
+
                 </ul>
             </div>
         </div>

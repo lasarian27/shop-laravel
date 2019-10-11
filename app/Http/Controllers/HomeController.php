@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAddress;
-use App\Http\Requests\StoreRole;
-use App\Http\Requests\UpdateRole;
 use App\Models\Address;
 use App\Models\Product;
-use App\Models\Role;
 use App\Models\User;
-use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {
@@ -68,56 +64,7 @@ class HomeController extends Controller
             ['country' => $request->get('address')]
         );
 
-        return redirect()->back();
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function roles()
-    {
-        if (Gate::denies('isAdmin')) {
-            return redirect()->home();
-        }
-
-        $roles = Role::all();
-        $users = User::all();
-
-        return view('admin.roles')->with([
-            'roles' => $roles,
-            'users' => $users
-        ]);
-    }
-
-    /**
-     * @param StoreRole $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function saveNewRole(StoreRole $request)
-    {
-        (new Role())->fill([
-            'name' => $request->get('role')
-        ])->save();
-
-        return back();
-    }
-
-    /**
-     * @param UpdateRole $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
-    public function role(UpdateRole $request)
-    {
-        $user = User::query()
-            ->where('id', $request->get('user'))
-            ->firstOrFail();
-
-        $this->authorize('update', $user);
-
-        $user->roles()->attach($request->get('role'));
-
-        return back();
+        return redirect()->route('role.index');
     }
 
 }

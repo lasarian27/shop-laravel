@@ -9,7 +9,7 @@
             <br>
             <p>{{ __('shop.name') }}: {{ $user->name }}</p>
             <p>{{ __('shop.email') }}: {{ $user->email }}</p>
-            <h3 class="{{ $user->admin ? "alert-success text-center" : "alert-danger" }}">{{  $user->admin ? "Admin" : "User" }}</h3>
+            <h3 class="{{ $user->admin ? "alert-success text-center" : "alert-danger text-center" }}">{{  $user->roles[0]->name }}</h3>
             <form action="{{ route('profile.address', [$user['id']]) }}" method="POST">
                 {{ csrf_field() }}
                 <label for="address">{{ __('shop.user.address') }}</label>
@@ -26,7 +26,7 @@
             </form>
         @endif
 
-        @if(isset($products_by_address))
+        @if(count($products_by_address))
             <h4>{{ __('shop.products.by.address') }}</h4>
             <div class="row">
                 <table class="table">
@@ -54,8 +54,9 @@
             </div>
         @endif
         <br>
-        <h3>{{ __('shop.products.from.user') }}</h3>
+
         @if(count($products))
+            <h3>{{ __('shop.products.from.user') }}</h3>
             <div class="row">
                 <table class="table">
                     <tbody>
@@ -80,8 +81,6 @@
                     </tbody>
                 </table>
             </div>
-        @else
-            <h2>{{ __('shop.empty.cart') }}</h2>
         @endif
     </div>
 

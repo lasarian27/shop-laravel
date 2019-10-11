@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class StoreProduct extends FormRequest
+class SubmitCart extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,9 +13,7 @@ class StoreProduct extends FormRequest
      */
     public function authorize()
     {
-        /** @var  User $user */
-        $user = Auth::user();
-        return $user->isAdmin() || $user->isModerator();
+        return true;
     }
 
     /**
@@ -28,10 +24,9 @@ class StoreProduct extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'image' => 'required|image|max:2048'
+            'name' => 'required',
+            'email' => 'required|email',
+            'comments' => 'required'
         ];
     }
 }

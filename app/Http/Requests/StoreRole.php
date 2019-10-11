@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreRole extends FormRequest
 {
@@ -13,7 +15,9 @@ class StoreRole extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        /** @var  User $user */
+        $user = Auth::user();
+        return $user->isAdmin() || $user->isModerator();
     }
 
     /**
