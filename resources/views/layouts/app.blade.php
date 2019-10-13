@@ -72,7 +72,7 @@
                                     <a class="dropdown-item" href="{{ route('role.index') }}">
                                         {{ __('shop.roles') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('products') }}">
+                                    <a class="dropdown-item" href="{{ route('products.show') }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endif
@@ -81,7 +81,7 @@
                                     <a class="dropdown-item" href="{{ route('profile', [Auth::user()->name]) }}">
                                         {{ __('shop.profile') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('products') }}">
+                                    <a class="dropdown-item" href="{{ route('products.show') }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endcan

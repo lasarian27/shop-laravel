@@ -6,12 +6,16 @@ use App\Http\Requests\StoreRole;
 use App\Http\Requests\UpdateRole;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class RolesController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @return Factory|RedirectResponse|View
      */
     public function index()
     {
@@ -21,12 +25,9 @@ class RolesController extends Controller
             return redirect()->home();
         }
 
-        $roles = Role::all();
-        $users = User::all();
-
         return view('admin.roles')->with([
-            'roles' => $roles,
-            'users' => $users
+            'roles' => Role::all(),
+            'users' => User::all()
         ]);
     }
 
@@ -34,7 +35,7 @@ class RolesController extends Controller
      * Store a new role
      *
      * @param StoreRole $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StoreRole $request)
     {
@@ -50,7 +51,7 @@ class RolesController extends Controller
      *
      * @param UpdateRole $request
      * @param $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateRole $request, $id)
     {

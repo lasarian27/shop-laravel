@@ -13,7 +13,7 @@ class ProductPolicy
     /**
      * Determine whether the user can view the product.
      *
-     * @param  \App\Models\User $user
+     * @param User $user
      * @param Product $product
      * @return mixed
      */
@@ -23,27 +23,27 @@ class ProductPolicy
     }
 
     /**
-     * Determine whether the user can update or create the product.
-     *
-     * @param  \App\Models\User $user
-     * @param  Product $product
-     * @return mixed
-     */
-    public function update(User $user, Product $product)
-    {
-        return $user->isAdmin() && $product->user_id === $user->getKey();
-    }
-
-    /**
      * Determine whether the user can delete the product.
      *
-     * @param  \App\Models\User $user
-     * @param  Product $product
+     * @param User $user
+     * @param Product $product
      * @return mixed
      */
     public function delete(User $user, Product $product)
     {
         return $this->update($user, $product);
+    }
+
+    /**
+     * Determine whether the user can update or create the product.
+     *
+     * @param User $user
+     * @param Product $product
+     * @return mixed
+     */
+    public function update(User $user, Product $product)
+    {
+        return $user->isAdmin() && $product->user_id === $user->getKey();
     }
 
 }

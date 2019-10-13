@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProduct;
 use App\Models\Product;
+use App\Models\User;
 use Exception;
-use Illuminate\Http\Request;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -23,6 +23,11 @@ class ProductsController extends Controller
             'name_page' => __('shop.create.product'),
             'action' => 'product.store',
         ]);
+    }
+
+    public function update(StoreProduct $request, Product $product)
+    {
+        return $this->store($request, $product);
     }
 
     /**
@@ -52,16 +57,11 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function update(StoreProduct $request, Product $product)
-    {
-        return $this->store($request, $product);
-    }
-
     /**
      * Edit a product
      * @param Product $product
      * @return Factory|View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      */
     public function edit(Product $product)
     {
@@ -80,9 +80,11 @@ class ProductsController extends Controller
     /**
      * @return Factory|View
      */
-    public function products()
+    public function show()
     {
-        if (!Gate::any(['isAdmin', 'isModerator'], Auth::user())) {
+        /** @var  User $user */
+        $user = Auth::user();
+        if (!$user->isAdmin() && !$user->isModerator()) {
             return redirect()->home();
         }
 

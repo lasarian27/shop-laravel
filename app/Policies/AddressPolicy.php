@@ -13,13 +13,13 @@ class AddressPolicy
     /**
      * Determine whether the user can update the address.
      *
-     * @param  \App\Models\User $user
+     * @param User $user
      * @param  Address $address
      * @return mixed
      */
     public function update(User $user, Address $address)
     {
-        return $address->user_id === $user->id;
+        return $address->user_id === $user->getKey();
     }
 
 }

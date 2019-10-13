@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Support\Facades\Gate;
 
 class UserPolicy
 {
@@ -13,24 +12,24 @@ class UserPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User $user
-     * @param  \App\Models\User $model
+     * @param User $user
+     * @param User $model
      * @return mixed
      */
     public function view(User $user, User $model)
     {
-        return $user->id === $model->id && ($user->isAdmin() || $user->isModerator());
+        return $user->getKey() === $model->getKey() && ($user->isAdmin() || $user->isModerator());
     }
 
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\User $user
-     * @param  \App\Models\User $model
+     * @param User $user
+     * @param User $model
      * @return mixed
      */
     public function update(User $user, User $model)
     {
-        return Gate::allows('isAdmin', $user);
+        return $user->isAdmin();
     }
 }

@@ -6,6 +6,10 @@ use App\Http\Requests\StoreAddress;
 use App\Models\Address;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -13,7 +17,7 @@ class HomeController extends Controller
     /**
      * Return 'home' with the products that are not in the cart
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -26,11 +30,12 @@ class HomeController extends Controller
 
     /**
      * @param $name
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Factory|View
+     * @throws AuthorizationException
      */
     public function profile($name)
     {
+        /** @var  User $user */
         $user = User::query()
             ->where('name', $name)
             ->with('address')
@@ -52,8 +57,8 @@ class HomeController extends Controller
     /**
      * @param StoreAddress $request
      * @param User $user
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function address(StoreAddress $request, User $user)
     {

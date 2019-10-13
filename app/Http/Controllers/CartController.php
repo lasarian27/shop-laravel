@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SubmitCart;
 use App\Mail\CheckoutCart;
 use App\Models\Product;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
@@ -12,7 +13,7 @@ class CartController extends Controller
     /**
      * Show the cart
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -24,7 +25,7 @@ class CartController extends Controller
      * Checkout
      *
      * @param SubmitCart $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(SubmitCart $request)
     {
@@ -46,7 +47,7 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param Integer $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update($id)
     {
@@ -59,7 +60,7 @@ class CartController extends Controller
      * Remove a product from the cart
      *
      * @param Integer $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
