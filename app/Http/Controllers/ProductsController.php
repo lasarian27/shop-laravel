@@ -53,7 +53,7 @@ class ProductsController extends Controller
         return back()->with([
             'message' => 'success',
             'name_page' => __('shop.create.product'),
-            'action' => 'product.add',
+            'action' => 'products.add',
         ]);
     }
 
@@ -69,7 +69,7 @@ class ProductsController extends Controller
 
         return view('admin.product')->with([
             'name_page' => __('shop.edit.product'),
-            'action' => 'product.update',
+            'action' => 'products.update',
             'id' => $product->id,
             'title' => $product->title,
             'description' => $product->description,

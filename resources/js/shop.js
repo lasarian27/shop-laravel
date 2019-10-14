@@ -1,6 +1,6 @@
 $('#submit-role').click(function () {
     $.ajax({
-        type: "PATCH",
+        type: "PUT",
         dataType: 'JSON',
         url: '/role/' + $("#inputUser").find('option:selected').attr('value'),
         data: {

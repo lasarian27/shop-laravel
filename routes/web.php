@@ -22,11 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/cart', 'CartController')->only(['index', 'store', 'update', 'destroy']);
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/products', 'ProductsController')->only(['show', 'create', 'store', 'edit', 'destroy', 'update']);
-    Route::resource('/profile', 'ProductsController')->only(['index', 'update', 'edit']);
-    Route::resource('/role', 'RolesController')->only(['index', 'store', 'update', 'edit']);;
-
-    Route::get('/profile/{name}', 'HomeController@profile')->name('profile');
-    Route::post('/profile/{user}', 'HomeController@address')->name('profile.address');
-
+    Route::resource('products', 'ProductsController')->only(['show', 'create', 'store', 'edit', 'destroy', 'update']);
+    Route::resource('profile', 'ProductsController')->only(['index', 'update', 'edit']);
+    Route::resource('role', 'RolesController')->only(['index', 'store', 'update', 'edit']);;
+    Route::resource('profile', 'ProfileController')->only('index', 'update');
 });

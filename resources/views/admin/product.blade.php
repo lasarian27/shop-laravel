@@ -11,10 +11,9 @@
         @endif
         <h2 class="text-center">{{ $name_page }}</h2>
         <br>
-
-            @if($action === "product.store")
+            @if($action === "products.store" )
                 <form method="POST" action="{{ route($action,[ $id ?? null ]) }}" enctype="multipart/form-data">
-                @elseif($action === "product.update")
+            @elseif($action === "products.update")
                 <form method="POST" action="{{ route($action,[ $id ?? null ]) }}" enctype="multipart/form-data">
                     @method('PATCH')
             @endif

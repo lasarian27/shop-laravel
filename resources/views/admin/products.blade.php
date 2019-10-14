@@ -22,16 +22,16 @@
                         <div class="card-footer text-center">
 
                             <div class="row">
-                                @can('view', $product)
-                                    <a href="{{ route('product.edit', $product['id']) }}"
+                               @if(Auth::user()->isModerator() && Auth::user()->getKey() === $product['id'])
+                                    <a href="{{ route('products.edit', $product['id']) }}"
                                        class="btn btn-info col">{{ __('shop.edit') }}</a>
-                                    <form action="{{ route('product.destroy', [$product['id']]) }}" method="POST"
+                                    <form action="{{ route('products.destroy', [$product['id']]) }}" method="POST"
                                           class="col">
                                         @method('DELETE')
                                         {{ csrf_field() }}
                                         <button type="submit" class="btn btn-danger">{{ __('shop.delete') }}</button>
                                     </form>
-                                @endcan
+                                @endif
                                 <p class="text-center">{{ __('shop.created.by') . $product->user->name . " - " . $product->created_at->diffForHumans() }}</p>
                             </div>
 
@@ -43,6 +43,6 @@
             <h2>{{ __('shop.empty.db') }}</h2>
         @endif
 
-        <a href="{{ route('product.create') }}" class="btn btn-primary">{{ __('shop.create.product') }}</a>
+        <a href="{{ route('products.create') }}" class="btn btn-primary">{{ __('shop.create.product') }}</a>
     </div>
 @endsection

@@ -10,7 +10,8 @@
             <p>{{ __('shop.name') }}: {{ $user->name }}</p>
             <p>{{ __('shop.email') }}: {{ $user->email }}</p>
             <h3 class="{{ $user->admin ? "alert-success text-center" : "alert-danger text-center" }}">{{  $user->roles[0]->name }}</h3>
-            <form action="{{ route('profile.address', [$user['id']]) }}" method="POST">
+            <form action="{{ route('profile.update', [$user['id']]) }}" method="POST">
+                @method('PUT')
                 {{ csrf_field() }}
                 <label for="address">{{ __('shop.user.address') }}</label>
                 <div class="form-group">
@@ -40,7 +41,7 @@
                             <td><p class="card-text">{{ $product['description'] }}</p></td>
                             <td><p class="card-text">{{ $product['price'] }}$</p></td>
                             <td>
-                                <form action="{{ route('product.destroy', [$product['id']]) }}" method="POST"
+                                <form action="{{ route('products.destroy', [$product['id']]) }}" method="POST"
                                       class="col">
                                     @method('DELETE')
                                     {{ csrf_field() }}
@@ -69,7 +70,7 @@
                             <td><p class="card-text">{{ $product['description'] }}</p></td>
                             <td><p class="card-text">{{ $product['price'] }}$</p></td>
                             <td>
-                                <form action="{{ route('product.destroy', [$product['id']]) }}" method="POST"
+                                <form action="{{ route('products.destroy', [$product['id']]) }}" method="POST"
                                       class="col">
                                     @method('DELETE')
                                     {{ csrf_field() }}

@@ -47,7 +47,7 @@
                             </li>
                         @endif
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart') }}">
+                            <a class="nav-link" href="{{ route('cart.index') }}">
                                 {{ __('shop.cart') }}
                             </a>
                         </li>
@@ -66,22 +66,22 @@
                                 </a>
 
                                 @if(Auth::user()->isAdmin())
-                                    <a class="dropdown-item" href="{{ route('profile', [Auth::user()->name]) }}">
+                                    <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('shop.profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('role.index') }}">
                                         {{ __('shop.roles') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('products.show') }}">
+                                    <a class="dropdown-item" href="{{ route('products.show', ['all']) }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endif
 
                                 @if(Auth::user()->isModerator())
-                                    <a class="dropdown-item" href="{{ route('profile', [Auth::user()->name]) }}">
+                                    <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('shop.profile') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('products.show') }}">
+                                    <a class="dropdown-item" href="{{ route('products.show', ['all']) }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endcan
