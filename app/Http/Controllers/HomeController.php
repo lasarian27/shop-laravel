@@ -15,10 +15,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::query()
-            ->whereNotIn('id', session()->get('cart', []))
-            ->get();
-
-        return view('home')->with(compact('products'));
+        return view('home');
     }
 }

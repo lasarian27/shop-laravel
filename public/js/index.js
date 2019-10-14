@@ -81,49 +81,50 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/shop.js":
-/*!******************************!*\
-  !*** ./resources/js/shop.js ***!
-  \******************************/
+/***/ "./resources/js/index.js":
+/*!*******************************!*\
+  !*** ./resources/js/index.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#submit-role').click(function () {
-  $.ajax({
-    type: "PUT",
-    dataType: 'JSON',
-    url: '/role/' + $("#inputUser").find('option:selected').attr('value'),
-    data: {
-      "role": $("#inputRoles").find('option:selected').attr('value'),
-      "user": $("#inputUser").find('option:selected').attr('value')
-    },
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    success: function success(response) {
-      console.log(response);
-    },
-    error: function error(_error) {
-      console.log(_error);
-    }
-  });
+/*
+$(document).ready(function () {
+    let jqxhr = $.get( "/home", function() {
+        alert( "success" );
+    })
+        .done(function(data) {
+            console.log(data);
+            alert( "second success" );
+        })
+        .fail(function() {
+            alert( "error" );
+        })
+        .always(function() {
+            alert( "finished" );
+        });
+
+    jqxhr.always(function() {
+        alert( "second finished" );
+    });
 });
+*/
 
 /***/ }),
 
-/***/ 1:
-/*!************************************!*\
-  !*** multi ./resources/js/shop.js ***!
-  \************************************/
+/***/ 2:
+/*!*************************************!*\
+  !*** multi ./resources/js/index.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\vhosts\shop-laravel\resources\js\shop.js */"./resources/js/shop.js");
+module.exports = __webpack_require__(/*! D:\vhosts\shop-laravel\resources\js\index.js */"./resources/js/index.js");
 
 
 /***/ })

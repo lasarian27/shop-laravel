@@ -11,14 +11,19 @@ use Illuminate\Support\Facades\Mail;
 class CartController extends Controller
 {
     /**
-     * Show the cart
-     *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $products = Product::query()->whereIn('id', session()->get('cart', []))->get();
-        return view('cart')->with(compact('products'));
+        return view('cart');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function show()
+    {
+        return Product::query()->whereIn('id', session()->get('cart', []))->paginate();
     }
 
     /**
@@ -40,7 +45,7 @@ class CartController extends Controller
 
         session()->forget('cart');
 
-        return redirect()->home();
+        return response()->json(['status' => "The email was sent successfully"]);
     }
 
     /**
@@ -51,9 +56,10 @@ class CartController extends Controller
      */
     public function update($id)
     {
+
         session()->push('cart', $id);
 
-        return redirect()->back();
+        return response()->json(['status' => '200']);
     }
 
     /**
@@ -71,6 +77,6 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
-        return redirect()->back();
+        return response()->json(['status' => '200']);
     }
 }

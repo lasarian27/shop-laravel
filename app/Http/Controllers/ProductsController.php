@@ -15,6 +15,16 @@ use Illuminate\View\View;
 class ProductsController extends Controller
 {
     /**
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function index()
+    {
+        return Product::query()
+            ->whereNotIn('id', session()->get('cart', []))
+            ->paginate();
+    }
+
+    /**
      * @return Factory|View
      */
     public function create()
