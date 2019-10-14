@@ -70,7 +70,6 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('shop.logout') }}
                                 </a>
-
                                 @if(Auth::user()->isAdmin())
                                     <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('shop.profile') }}
@@ -78,7 +77,7 @@
                                     <a class="dropdown-item" href="{{ route('role.index') }}">
                                         {{ __('shop.roles') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('products.show', ['all']) }}">
+                                    <a class="dropdown-item" href="{{ route('products.index') }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endif
@@ -87,7 +86,7 @@
                                     <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('shop.profile') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('products.show', ['all']) }}">
+                                    <a class="dropdown-item" href="{{ route('products.index') }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endcan

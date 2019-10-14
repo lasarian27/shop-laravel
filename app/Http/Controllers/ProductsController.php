@@ -2,26 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditProduct;
 use App\Http\Requests\StoreProduct;
 use App\Models\Product;
 use App\Models\User;
 use Exception;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
     /**
+     * @param Request $request
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Product::query()
-            ->whereNotIn('id', session()->get('cart', []))
-            ->paginate();
+        if ($request->ajax()) {
+            return Product::query()
+                ->whereNotIn('id', session()->get('cart', []))
+                ->paginate();
+        }
+
+        $products = Product::query()->orderBy('created_at', 'desc')->get();
+        return view('admin.products')->with(compact('products'));
     }
 
     /**
@@ -31,7 +38,7 @@ class ProductsController extends Controller
     {
         return view('admin.product')->with([
             'name_page' => __('shop.create.product'),
-            'action' => 'product.store',
+            'action' => 'products.store',
         ]);
     }
 
@@ -60,10 +67,8 @@ class ProductsController extends Controller
         $name = $product['id'] . '.' . $request['image']->getClientOriginalExtension();
         $image->move(public_path(config('app.image_dir')), $name);
 
-        return back()->with([
-            'message' => 'success',
-            'name_page' => __('shop.create.product'),
-            'action' => 'products.add',
+        return response()->json([
+            'status' => 'The product was modified successfully',
         ]);
     }
 
@@ -71,12 +76,9 @@ class ProductsController extends Controller
      * Edit a product
      * @param Product $product
      * @return Factory|View
-     * @throws AuthorizationException
      */
     public function edit(Product $product)
     {
-        $this->authorize('view', $product);
-
         return view('admin.product')->with([
             'name_page' => __('shop.edit.product'),
             'action' => 'products.update',
@@ -88,7 +90,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @return Factory|View
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function show()
     {
@@ -98,22 +100,22 @@ class ProductsController extends Controller
             return redirect()->home();
         }
 
-        $products = Product::query()->orderBy('created_at', 'desc')->get();
-
-        return view('admin.products')->with(compact('products'));
+        return Product::query()->orderBy('created_at', 'desc')->paginate();
     }
 
     /**
      * Destroy the product
+     * @param Request $request
      * @param Product $product
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
-        $this->authorize('delete', $product);
-
         $product->delete();
+        if ($request->ajax()) {
+            return response()->json(['status' => '200']);
+        }
         return back();
     }
 
