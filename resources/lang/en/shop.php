@@ -52,6 +52,9 @@ return [
     "users.roles" => "Manage User roles",
     "user" => "User",
     "role" => "Role",
-    "in.db" => "In db now"
+    "in.db" => "In db now",
+    "error" => "Something went wrong",
+    "mail.sent" => "The email was sent successfully",
+    "product.edited" => "The product was modified successfully"
 
 ];

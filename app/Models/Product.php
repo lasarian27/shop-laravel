@@ -21,6 +21,10 @@ class Product extends Model
             /** @var static $model */
             $model->deleteImage();
         });
+
+        static::creating(function ($query) {
+            $query->user_id = auth()->id();
+        });
     }
 
     private function deleteImage()
@@ -35,4 +39,5 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
 }

@@ -10690,3 +10690,7 @@ table img {
   border-radius: 5px;
 }
 
+.row.text-center {
+  display: block;
+}
+

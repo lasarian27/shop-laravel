@@ -16,7 +16,10 @@ class StoreProduct extends FormRequest
     public function authorize()
     {
         /** @var  User $user */
-        $user = Auth::user();
+        if (!$user = Auth::user()) {
+            return false;
+        }
+
         return $user->isAdmin() || $user->isModerator();
     }
 
@@ -27,11 +30,16 @@ class StoreProduct extends FormRequest
      */
     public function rules()
     {
-        return [
+        $validation = [
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'image' => 'required|image|max:2048'
         ];
+
+        if ($this->method() === "POST") {
+            $validation['image'] = 'required|image|max:2048';
+        }
+
+        return $validation;
     }
 }

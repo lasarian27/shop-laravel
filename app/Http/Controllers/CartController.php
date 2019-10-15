@@ -19,20 +19,12 @@ class CartController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function show()
-    {
-        return Product::query()->whereIn('id', session()->get('cart', []))->paginate();
-    }
-
-    /**
      * Checkout
      *
      * @param SubmitCart $request
      * @return Response
      */
-    public function store(SubmitCart $request)
+    public function checkout(SubmitCart $request)
     {
         $products = Product::query()->whereIn('id', session()->get('cart', []))->get();
 
@@ -45,38 +37,36 @@ class CartController extends Controller
 
         session()->forget('cart');
 
-        return response()->json(['status' => "The email was sent successfully"]);
+        return response()->json(['status' => __('shop.mail.sent')]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Integer $id
+     * @param Product $product
      * @return Response
      */
-    public function update($id)
+    public function add(Product $product)
     {
+        session()->push('cart', $product->getKey());
 
-        session()->push('cart', $id);
-
-        return response()->json(['status' => '200']);
+        return response();
     }
 
     /**
      * Remove a product from the cart
      *
-     * @param Integer $id
+     * @param Product $product
      * @return Response
      */
-    public function destroy($id)
+    public function remove(Product $product)
     {
-        $cart = array_diff(
+
+        session()->put('cart', array_diff(
             session()->get('cart', []),
-            [$id]
-        );
+            [$product->getKey()]
+        ));
 
-        session()->put('cart', $cart);
-
-        return response()->json(['status' => '200']);
+        return response();
     }
 }

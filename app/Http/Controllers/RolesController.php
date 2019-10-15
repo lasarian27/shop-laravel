@@ -59,6 +59,7 @@ class RolesController extends Controller
         $user = User::query()
             ->where('id', $id)
             ->firstOrFail();
+
         $user->roles()->updateExistingPivot($user, ['role_id' => $request->get('role')]);
 
         return back();

@@ -16,7 +16,10 @@ class UpdateRole extends FormRequest
     public function authorize()
     {
         /** @var  User $user */
-        $user = Auth::user();
+        if (!$user = Auth::user()) {
+            return false;
+        }
+
         return $user->isAdmin() || $user->isModerator();
     }
 

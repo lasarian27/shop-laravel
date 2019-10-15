@@ -13,7 +13,7 @@ class SubmitCart extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return empty(session()->get('cart', []));
     }
 
     /**

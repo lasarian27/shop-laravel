@@ -12,14 +12,28 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/shop.js') }}" defer></script>
-    <script src="{{ asset('js/index.js') }}" defer></script>
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
-    @yield('script')
+    <script>
+        /**
+         * Converts a string to its html characters completely.
+         **/
+        function validate(str) {
+            let buf = [];
+            str = str.toString();
+            for (let i = str.length - 1; i >= 0; i--) {
+                buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
+            }
 
-    <!-- Fonts -->
+            return buf.join('');
+        }
+    </script>
+
+@yield('script')
+
+<!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
@@ -53,7 +67,7 @@
                             </li>
                         @endif
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart.index') }}">
+                            <a class="nav-link" href="{{ route('cart') }}">
                                 {{ __('shop.cart') }}
                             </a>
                         </li>
@@ -77,7 +91,7 @@
                                     <a class="dropdown-item" href="{{ route('role.index') }}">
                                         {{ __('shop.roles') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('products.index') }}">
+                                    <a class="dropdown-item" href="{{ route('admin') }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endif
@@ -86,12 +100,12 @@
                                     <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('shop.profile') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('products.index') }}">
+                                    <a class="dropdown-item" href="{{ route('admin') }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endcan
 
-                                <a class="dropdown-item" href="{{ route('cart.index') }}">
+                                <a class="dropdown-item" href="{{ route('cart') }}">
                                     {{ __('shop.cart') }}
                                 </a>
 

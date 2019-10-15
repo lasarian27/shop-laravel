@@ -15,14 +15,21 @@ Route::get('/', function () {
     return redirect()->home();
 })->name('home');
 
+Route::get('/test', function () {
+    //
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/cart', 'CartController')->only(['index', 'show', 'store', 'update', 'destroy']);
+Route::get('/cart', 'CartController@index')->name('cart');
+Route::post('/cart/{product}/add', 'CartController@add')->name('cart.add');
+Route::post('/cart/{product}/remove', 'CartController@remove')->name('cart.remove');
+Route::post('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
 
+Route::resource('/role', 'RolesController')->only(['index', 'store', 'update', 'edit']);
+Route::resource('/profile', 'ProfileController')->only(['index', 'update']);
+Route::resource('/products', 'ProductsController')->except('show');
 
-Route::resource('products', 'ProductsController')->only(['index', 'show', 'create', 'store', 'edit', 'destroy', 'update']);
-Route::resource('profile', 'ProductsController')->only(['index', 'update', 'edit']);
-Route::resource('role', 'RolesController')->only(['index', 'store', 'update', 'edit']);
-Route::resource('profile', 'ProfileController')->only(['index', 'update']);
+Route::get('/admin', 'AdminController@index')->name('admin');

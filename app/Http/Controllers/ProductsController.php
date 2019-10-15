@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditProduct;
 use App\Http\Requests\StoreProduct;
+use App\Http\Requests\UpdateProduct;
 use App\Models\Product;
-use App\Models\User;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -21,14 +20,20 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            return Product::query()
-                ->whereNotIn('id', session()->get('cart', []))
-                ->paginate();
+        $query = Product::query()->with('user');
+
+        if ($request->page === "home") {
+            $query->whereNotIn('id', session()->get('cart', []));
         }
 
-        $products = Product::query()->orderBy('created_at', 'desc')->get();
-        return view('admin.products')->with(compact('products'));
+        if ($request->page === "cart") {
+            $query->whereIn('id', session()->get('cart', []));
+        }
+
+        $query->orderBy('created_at', 'desc');
+        if($request->wantsJson()) {
+            return $query->paginate();
+        }
     }
 
     /**
@@ -36,12 +41,16 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('admin.product')->with([
-            'name_page' => __('shop.create.product'),
-            'action' => 'products.store',
+        return view('admin.create')->with([
+            'product' => new Product()
         ]);
     }
 
+    /**
+     * @param StoreProduct $request
+     * @param Product $product
+     * @return RedirectResponse
+     */
     public function update(StoreProduct $request, Product $product)
     {
         return $this->store($request, $product);
@@ -50,25 +59,29 @@ class ProductsController extends Controller
     /**
      * Create or update a product
      * @param StoreProduct $request
-     * @param Product|null $product
+     * @param Product $product
      * @return RedirectResponse
      */
     public function store(StoreProduct $request, Product $product)
     {
-        $product->fill([
-            'title' => $request->get('title'),
-            'user_id' => Auth::id(),
-            'description' => $request->get('description'),
-            'price' => $request->get('price')
-        ])->save();
+        $product->fill($request->all())->save();
 
-        $image = $request->file('image');
+        if ($request->image !== 'undefined') {
+            $image = $request->file('image');
 
-        $name = $product['id'] . '.' . $request['image']->getClientOriginalExtension();
-        $image->move(public_path(config('app.image_dir')), $name);
+            $name = $product->getKey() . '.' . $request['image']->getClientOriginalExtension();
+            $image->move(public_path(config('app.image_dir')), $name);
+        }
 
-        return response()->json([
-            'status' => 'The product was modified successfully',
+        if ($request->wantsJson()) {
+            return response()->json([
+                'status' => __('shop.product.edited'),
+                'product' => $product,
+            ]);
+        }
+
+        return view('admin.create')->with([
+            'product' => new Product()
         ]);
     }
 
@@ -79,28 +92,9 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.product')->with([
-            'name_page' => __('shop.edit.product'),
-            'action' => 'products.update',
-            'id' => $product->id,
-            'title' => $product->title,
-            'description' => $product->description,
-            'price' => $product->price,
+        return view('admin.create')->with([
+            'product' => $product
         ]);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function show()
-    {
-        /** @var  User $user */
-        $user = Auth::user();
-        if (!$user->isAdmin() && !$user->isModerator()) {
-            return redirect()->home();
-        }
-
-        return Product::query()->orderBy('created_at', 'desc')->paginate();
     }
 
     /**
@@ -113,9 +107,11 @@ class ProductsController extends Controller
     public function destroy(Request $request, Product $product)
     {
         $product->delete();
-        if ($request->ajax()) {
-            return response()->json(['status' => '200']);
+
+        if ($request->wantsJson()) {
+            return response();
         }
+
         return back();
     }
 

@@ -4,12 +4,14 @@
 
 @section('content')
     <div class="profile container">
+
         @if(isset($user))
             <h4>{{ __('shop.account.details') }}</h4>
             <br>
             <p>{{ __('shop.name') }}: {{ $user->name }}</p>
             <p>{{ __('shop.email') }}: {{ $user->email }}</p>
             <h3 class="{{ $user->admin ? "alert-success text-center" : "alert-danger text-center" }}">{{  $user->roles[0]->name }}</h3>
+
             <form action="{{ route('profile.update', [$user['id']]) }}" method="POST">
                 @method('PUT')
                 {{ csrf_field() }}

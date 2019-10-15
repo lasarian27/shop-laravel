@@ -4,56 +4,57 @@
 
 @section('script')
     <script>
+        $(document).on('click', '.btn.btn-primary', function () {
+            $.ajax({
+                url: '/cart/' + $(this).attr('data'),
+                type: 'PUT',
+                data: { '_token': '{{ csrf_token() }}' }
+            })
+            .done(function (req) {
+                getProducts(req.data);
+            });
+        });
+
         function renderProducts(data) {
             let html = '<div class="row">';
+
             data.forEach(function (product) {
                 html += '<div class="card">';
-                html += '<div class="card-header">';
-                html += '<img src="<?= config('app.image_dir') . '/' ?>' + product.id + '<?= config('app.image_extension') ?>" class="card-img-top">';
-                html += '</div>';
-                html += '<div class="card-body">';
-                html += '<h5 class="card-title">' + product.title + '</h5>';
-                html += '<p class="card-text">' + product.description + '</p>';
-                html += '<h2 class="card-text text-center">' + product.price + '$</h2>';
-                html += '</div>';
-                html += '<div class="card-footer text-center">';
-                html += '<button class="btn btn-primary" data="' + product.id + '"><?= __("shop.add") ?></button>';
-                html += '</div>';
+                html +=     '<div class="card-header">';
+                html +=         '<img src="{{ config('app.image_dir') . '/' }}' + validate(product.id) + '{{ config('app.image_extension') }}" class="card-img-top">';
+                html +=     '</div>';
+                html +=     '<div class="card-body">';
+                html +=         '<h5 class="card-title">' + validate(product.title) + '</h5>';
+                html +=         '<p class="card-text">' + validate(product.description) + '</p>';
+                html +=         '<h2 class="card-text text-center">' + validate(product.price) + '$</h2>';
+                html +=     '</div>';
+                html +=     '<div class="card-footer text-center">';
+                html +=         '<button class="btn btn-primary" data="' + validate(product.id) + '"><?= __("shop.add") ?></button>';
+                html +=     '</div>';
                 html += '</div>';
             });
+
             html += '</div>';
-            $(html).appendTo(".container.home");
+
+            $('.container.home').html(html);
         }
 
         function getProducts() {
-            $.get("/products", function () {
-                console.log("success");
+            $.ajax({
+                url: '/products',
+                data: { page: 'home' },
+                dataType: 'json'
             })
-                .done(function (req) {
-                    if (!req.data.length) {
-                        $("<h2 class=\"text-center\">{{ __('shop.empty.db') }}</h2>").appendTo("#errors");
-                    }
+            .done(function (req) {
+                if (!req.data.length) {
+                    $('<h2 class="text-center">{{ __('shop.empty.db') }}</h2>').appendTo('#errors');
+                }
 
-                    $(".container.home").empty();
-
-                    renderProducts(req.data);
-
-                    $(".btn.btn-primary").click(function () {
-                        $.ajax({
-                            url: '/cart/' + $(this).attr('data'),
-                            type: 'PUT',
-                            data: {
-                                "_token": "{{ csrf_token() }}"
-                            },
-                            success: function () {
-                                getProducts();
-                            }
-                        });
-                    });
-                })
-                .fail(function () {
-                    $("<h4>Error</h4>").appendTo("#errors");
-                });
+                renderProducts(req.data);
+            })
+            .fail(function () {
+                $('<h4>{{ __('shop.error') }}</h4>').appendTo('#errors');
+            });
         }
 
         getProducts();
