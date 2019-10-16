@@ -1,7 +1,7 @@
 $('#submit-role').click(function () {
     $.ajax({
         type: "PUT",
-        dataType: 'JSON',
+        dataType: 'json',
         url: '/role/' + $("#inputUser").find('option:selected').attr('value'),
         data: {
             "role": $("#inputRoles").find('option:selected').attr('value'),

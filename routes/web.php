@@ -15,8 +15,8 @@ Route::get('/', function () {
     return redirect()->home();
 })->name('home');
 
-Route::get('/test', function () {
-    //
+Route::get('/bootstrap', function () {
+    return view('layouts.bootstrap');
 });
 
 Auth::routes();
@@ -27,9 +27,14 @@ Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart/{product}/add', 'CartController@add')->name('cart.add');
 Route::post('/cart/{product}/remove', 'CartController@remove')->name('cart.remove');
 Route::post('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
+Route::get('/products-data', 'ProductsDataController@index')->name('products.data');
 
-Route::resource('/role', 'RolesController')->only(['index', 'store', 'update', 'edit']);
-Route::resource('/profile', 'ProfileController')->only(['index', 'update']);
-Route::resource('/products', 'ProductsController')->except('show');
 
-Route::get('/admin', 'AdminController@index')->name('admin');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/profile', 'ProfileController')->only(['index', 'update']);
+
+    Route::get('/role', 'RolesController@index')->name('role');
+    Route::post('/role/{user}/update', 'RolesController@update')->name('role.update');
+
+    Route::resource('/products', 'ProductsController')->except('show');
+});

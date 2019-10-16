@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class UpdateRole extends FormRequest
 {
@@ -15,12 +13,7 @@ class UpdateRole extends FormRequest
      */
     public function authorize()
     {
-        /** @var  User $user */
-        if (!$user = Auth::user()) {
-            return false;
-        }
-
-        return $user->isAdmin() || $user->isModerator();
+        return $this->user()->isAdmin() || $this->user()->isModerator();
     }
 
     /**
@@ -32,7 +25,6 @@ class UpdateRole extends FormRequest
     {
         return [
             'role' => 'required',
-            'user' => 'required'
         ];
     }
 }

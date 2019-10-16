@@ -5,15 +5,29 @@
 @section('script')
     <script>
         $(document).on('click', '.delete', function () {
+            if(!window.startRequest) {
+                console.log(window.startRequest);
+                window.startRequest = true;
 
-            $.ajax({
-                url: '/cart/' + $(this).attr('data'),
-                type: 'DELETE',
-                data: { '_token': '{{ csrf_token() }}' },
-            }).done(function() {
-                getProducts();
-            });
+                $.ajax({
+                    url: '/cart/' + $(this).attr('data') + '/remove',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {'_token': '{{ csrf_token() }}'},
+                }).done(function () {
+                    getProducts();
+                    window.startRequest = false;
+                })
+                .fail(function() {
+                    if (err.status === 401) {
+                        document.location.href = '{{ config('app.url') }}' + '/login';
+                    }
 
+                    if (err.status === 403) {
+                        $("#errors").html('<h4>' + err.responseJSON.message + '</h4>');
+                    }
+                });
+            }
         });
 
         function showProducts(data) {
@@ -35,34 +49,38 @@
             html += '</tbody></table>';
             html += '</div>';
 
-            $('.cart').empty();
-            $(html).appendTo(".cart");
+            $(".cart").html(html);
         }
 
         function getProducts() {
             $.ajax({
-                url: '/products',
+                url: '/products-data',
                 data: { page: 'cart' },
                 dataType: 'json'
             })
             .done(function (req) {
-
                 if (!req.data.length) {
-                    $('<h2 class=\"text-center\">{{ __('shop.empty.cart') }}</h2>').appendTo('#errors');
-
-                    $('.form-checkout').css('display', 'none');
+                    $("#errors").html('<h2 class=\"text-center\">{{ __('shop.empty.cart') }}</h2>');
 
                     $('.cart').empty();
-
+                    $('.form-checkout').empty();
                 } else {
-                    $('.form-checkout').css('display', 'block');
-
                     showProducts(req.data);
+
+                    if (!$('.form-checkout').children().length) {
+                        renderForm();
+                    }
+
+                }
+            })
+            .fail(function (err) {
+                if (err.status === 401) {
+                    document.location.href = '{{ config('app.url') }}' + '/login';
                 }
 
-            })
-            .fail(function () {
-                $('<h4>{{ __('shop.error') }}</h4>').appendTo('#errors');
+                if (err.status === 403) {
+                    $("#errors").html('<h4>' + err.responseJSON.message + '</h4>');
+                }
             });
         }
 
@@ -89,39 +107,52 @@
             html += '   </div>';
             html += '</form>';
 
-            $(html).appendTo('.form-checkout');
+            $(".form-checkout").html(html);
         }
 
         $(document).on('submit', 'form', function (e) {
             e.preventDefault();
 
             $('.invalid-feedback').empty();
+            if(!window.startRequest) {
+                window.startRequest = true;
 
-            $.ajax({
-                url: '/cart',
-                type: 'POST',
-                data: $('form').serialize(),
-                dataType: 'json'
-            })
-            .done(function (res) {
-                $('<div class=\"alert alert-success\">' + validate(res.status) + '</div>').appendTo('#messages');
+                $.ajax({
+                    url: '/cart/checkout',
+                    type: 'POST',
+                    data: $('form').serialize(),
+                    dataType: 'json'
+                })
+                .done(function (res) {
+                    $("#messages").html('<div class=\"alert alert-success\">' + validate(res.status) + '</div>');
 
-                $('.cart').empty();
+                    $('.cart').empty();
 
-                $('.form-checkout').empty();
-            })
-            .fail(function (err) {
-                Object.keys(err.responseJSON.errors).map(function (key) {
-                    $('.invalid-feedback.' + key).css('display', 'block');
-                    $('<strong>' + validate(err.responseJSON.errors[key][0]) + '</strong>').appendTo('.invalid-feedback.' + key);
+                    $('.form-checkout').empty();
+                    window.startRequest = false;
+                })
+                .fail(function (err) {
+                    if (err.status === 422) {
+                        Object.keys(err.responseJSON.errors).map(function (key) {
+                            $(".invalid-feedback." + key).html('<strong>' + validate(err.responseJSON.errors[key][0]) + '</strong>').css('display', 'block');
+                        });
+                    }
+
+                    if (err.status === 403) {
+                        $("#errors").html('<h4>' + err.responseJSON.message + '</h4>');
+                    }
+
+                    if (err.status === 401) {
+                        document.location.href = '{{ config('app.url') }}' + '/login';
+                    }
+
+                    window.startRequest = false;
                 });
-            });
-
+            }
         });
 
         $(document).ready(function () {
             getProducts();
-            renderForm();
         })
 
     </script>
@@ -130,7 +161,7 @@
 @section('content')
     <div class="container">
         <div id="messages"></div>
-        <div id="errors"></div>
+        <div id="errors" class="invalid-feedback text-center" style="display: block"></div>
         <div class="cart"></div>
         <div class="form-checkout"></div>
     </div>

@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class StoreRole extends FormRequest
+class DestroyProduct extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,12 +13,7 @@ class StoreRole extends FormRequest
      */
     public function authorize()
     {
-        /** @var  User $user */
-        if (!$user = Auth::user()) {
-            return false;
-        }
-
-        return $user->isAdmin() || $user->isModerator();
+        return $this->user()->isAdmin() || $this->route('product')['user_id'] === $this->user()->getKey();
     }
 
     /**
@@ -30,8 +23,6 @@ class StoreRole extends FormRequest
      */
     public function rules()
     {
-        return [
-            'role' => 'required'
-        ];
+        return [];
     }
 }

@@ -12,17 +12,17 @@
             html += '    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token() }}\">';
             html += '    <div class="form-group">';
             html += '        <label for="title">{{ __('shop.title') }}</label>';
-            html += '        <input type="text" class="form-control" id="title" value="{{ old('title',  $product->title ?? '') }}" name="title">';
+            html += '        <input type="text" class="form-control" id="title" value="{{ old('title',  $product->title) }}" name="title">';
             html += '        <span class="invalid-feedback title" role="alert"></strong></span>';
             html += '    </div>';
             html += '    <div class="form-group">';
             html += '        <label for="description">{{ __('shop.description') }}</label>';
-            html += '        <input type="text" class="form-control" id="description" value="{{ old('description', $product->description ?? '') }}" name="description">';
+            html += '        <input type="text" class="form-control" id="description" value="{{ old('description', $product->description) }}" name="description">';
             html += '        <span class="invalid-feedback description" role="alert"></span>';
             html += '    </div>';
             html += '    <div class="form-group">';
             html += '        <label for="price">{{ __('shop.price') }}</label>';
-            html += '        <input type="number" class="form-control" step="any" id="price" value="{{ old('price', $product->price ?? '') }}" name="price">';
+            html += '        <input type="number" class="form-control" step="any" id="price" value="{{ old('price', $product->price) }}" name="price">';
             html += '        <span class="invalid-feedback price" role="alert"></span>';
             html += '    </div>';
             html += '    <div class="form-group">';
@@ -33,7 +33,8 @@
             html += '        <button type="submit" class="btn btn-primary">{{ __('shop.submit') }}</button>';
             html += '    </div>';
             html += '</form>';
-            $(html).appendTo('.container.product');
+
+            $(".container.product").html(html);
         }
 
         $(document).ready(function () {
@@ -52,38 +53,50 @@
             form.append('price', $('input[name="price"]').val());
             form.append('image', $('input[type=file]')[0].files[0]);
 
-            $.ajax({
-                url: '{{
+            if(!window.startRequest) {
+                window.startRequest = true;
+                $.ajax({
+                    url: '{{
                         $product->getKey() ?
                             route("products.update",[ $product->getKey() ])
                         :
                             route("products.store")
                         }}',
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                data: form
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    data: form
 
-            }).done(function (res) {
-                $('<div class=\"alert alert-success\">' + validate(res.status) + '</div>').appendTo('#messages');
+                }).done(function (res) {
+                    $("#messages").html('<div class=\"alert alert-success\">' + validate(res.status) + '</div>');
 
-                if (window.location.href.includes('create')) {
-                    $('input').val('');
-                }
+                    if (window.location.href.includes('create')) {
+                        $('input').val('');
+                    }
 
-                $('.form-checkout').empty();
-            }).fail(function (err) {
+                    window.startRequest = false;
+                    $('.form-checkout').empty();
+                }).fail(function (err) {
+                    if (err.status === 422) {
+                        Object.keys(err.responseJSON.errors).map(function (key) {
+                            $(".invalid-feedback." + key).html('<strong>' + validate(err.responseJSON.errors[key][0]) + '</strong>').css('display', 'block');
+                        });
+                    }
 
-                Object.keys(err.responseJSON.errors).map(function (key) {
-                    $('.invalid-feedback.' + key).css('display', 'block');
-                    $('<strong>' + err.responseJSON.errors[key][0] + '</strong>').appendTo('.invalid-feedback.' + key);
+                    if (err.status === 403) {
+                        $("#errors").html('<h4>' + err.responseJSON.message + '</h4>');
+                    }
+
+                    if (err.status === 401) {
+                        document.location.href = '{{ config('app.url') }}' + '/login';
+                    }
+                    window.startRequest = false;
                 });
-
-            });
+            }
         });
     </script>
 @endsection

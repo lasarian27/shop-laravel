@@ -2,67 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreRole;
 use App\Http\Requests\UpdateRole;
+use App\Http\Requests\VisitRole;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
 class RolesController extends Controller
 {
     /**
-     * @return Factory|RedirectResponse|View
+     * @param VisitRole $request
+     * @return array
      */
-    public function index()
+    public function index(VisitRole $request)
     {
-        /** @var  User $user */
-        $user = Auth::user();
-        if (!$user->isAdmin()) {
-            return redirect()->home();
+         if ($request->wantsJson()) {
+            $obj = ['users' => User::query()->with('roles')->get()];
+
+            if ($request->get('param') === 'all') {
+                $obj['roles'] = Role::all();
+            }
+
+            return $obj;
         }
 
-        return view('admin.roles')->with([
-            'roles' => Role::all(),
-            'users' => User::all()
-        ]);
-    }
-
-    /**
-     * Store a new role
-     *
-     * @param StoreRole $request
-     * @return Response
-     */
-    public function store(StoreRole $request)
-    {
-        (new Role())->fill([
-            'name' => $request->get('role')
-        ])->save();
-
-        return back();
+        return view('admin.roles');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param UpdateRole $request
-     * @param $id
+     * @param User $user
      * @return Response
      */
-    public function update(UpdateRole $request, $id)
+    public function update(UpdateRole $request, User $user)
     {
-        /** @var  User $user */
-        $user = User::query()
-            ->where('id', $id)
-            ->firstOrFail();
+        $user->roles()->sync([$request->get('role')]);
 
-        $user->roles()->updateExistingPivot($user, ['role_id' => $request->get('role')]);
-
-        return back();
+        return response()->json();
     }
 
 }

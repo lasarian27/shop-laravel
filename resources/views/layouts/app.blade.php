@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/shop.js') }}" defer></script>
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -29,6 +28,7 @@
 
             return buf.join('');
         }
+
     </script>
 
 @yield('script')
@@ -88,10 +88,10 @@
                                     <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('shop.profile') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('role.index') }}">
+                                    <a class="dropdown-item" href="{{ route('role') }}">
                                         {{ __('shop.roles') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('admin') }}">
+                                    <a class="dropdown-item" href="{{ route('products.index') }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endif
@@ -100,7 +100,7 @@
                                     <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('shop.profile') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('admin') }}">
+                                    <a class="dropdown-item" href="{{ route('products.index') }}">
                                         {{ __('shop.products') }}
                                     </a>
                                 @endcan

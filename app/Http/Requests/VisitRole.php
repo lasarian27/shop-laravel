@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SubmitCart extends FormRequest
+class VisitRole extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class SubmitCart extends FormRequest
      */
     public function authorize()
     {
-        return !empty(session()->get('cart', []));
+        return $this->user()->isAdmin();
     }
 
     /**
@@ -23,10 +23,6 @@ class SubmitCart extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'comments' => 'required'
-        ];
+        return [];
     }
 }

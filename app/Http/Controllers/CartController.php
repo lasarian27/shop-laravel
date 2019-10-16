@@ -50,7 +50,7 @@ class CartController extends Controller
     {
         session()->push('cart', $product->getKey());
 
-        return response();
+        return response()->json();
     }
 
     /**
@@ -67,6 +67,6 @@ class CartController extends Controller
             [$product->getKey()]
         ));
 
-        return response();
+        return response()->json();
     }
 }

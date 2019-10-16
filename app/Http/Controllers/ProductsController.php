@@ -2,38 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DestroyProduct;
 use App\Http\Requests\EditProduct;
 use App\Http\Requests\StoreProduct;
-use App\Http\Requests\UpdateProduct;
 use App\Models\Product;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
     /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return Factory|View
      */
-    public function index(Request $request)
+    public function index()
     {
-        $query = Product::query()->with('user');
-
-        if ($request->page === "home") {
-            $query->whereNotIn('id', session()->get('cart', []));
-        }
-
-        if ($request->page === "cart") {
-            $query->whereIn('id', session()->get('cart', []));
-        }
-
-        $query->orderBy('created_at', 'desc');
-        if($request->wantsJson()) {
-            return $query->paginate();
-        }
+        return view('admin.products');
     }
 
     /**
@@ -66,9 +51,7 @@ class ProductsController extends Controller
     {
         $product->fill($request->all())->save();
 
-        if ($request->image !== 'undefined') {
-            $image = $request->file('image');
-
+        if ($image = $request->file('image')) {
             $name = $product->getKey() . '.' . $request['image']->getClientOriginalExtension();
             $image->move(public_path(config('app.image_dir')), $name);
         }
@@ -87,10 +70,11 @@ class ProductsController extends Controller
 
     /**
      * Edit a product
+     * @param EditProduct $request
      * @param Product $product
      * @return Factory|View
      */
-    public function edit(Product $product)
+    public function edit(EditProduct $request, Product $product)
     {
         return view('admin.create')->with([
             'product' => $product
@@ -99,17 +83,17 @@ class ProductsController extends Controller
 
     /**
      * Destroy the product
-     * @param Request $request
+     * @param DestroyProduct $request
      * @param Product $product
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy(Request $request, Product $product)
+    public function destroy(DestroyProduct $request, Product $product)
     {
         $product->delete();
 
         if ($request->wantsJson()) {
-            return response();
+            return response()->json();
         }
 
         return back();

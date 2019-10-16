@@ -5,14 +5,20 @@
 @section('script')
     <script>
         $(document).on('click', '.btn.btn-primary', function () {
-            $.ajax({
-                url: '/cart/' + $(this).attr('data'),
-                type: 'PUT',
-                data: { '_token': '{{ csrf_token() }}' }
-            })
-            .done(function (req) {
-                getProducts(req.data);
-            });
+            if(!window.startRequest) {
+                window.startRequest = true;
+
+                $.ajax({
+                    url: '/cart/' + $(this).attr('data') + '/add',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { '_token': '{{ csrf_token() }}' }
+                })
+                .done(function (req) {
+                    getProducts(req.data);
+                    window.startRequest = false;
+                });
+            }
         });
 
         function renderProducts(data) {
@@ -29,7 +35,7 @@
                 html +=         '<h2 class="card-text text-center">' + validate(product.price) + '$</h2>';
                 html +=     '</div>';
                 html +=     '<div class="card-footer text-center">';
-                html +=         '<button class="btn btn-primary" data="' + validate(product.id) + '"><?= __("shop.add") ?></button>';
+                html +=         '<button class="btn btn-primary" data="' + validate(product.id) + '">{{ __("shop.add") }}</button>';
                 html +=     '</div>';
                 html += '</div>';
             });
@@ -41,23 +47,31 @@
 
         function getProducts() {
             $.ajax({
-                url: '/products',
+                url: '/products-data',
                 data: { page: 'home' },
                 dataType: 'json'
             })
             .done(function (req) {
                 if (!req.data.length) {
-                    $('<h2 class="text-center">{{ __('shop.empty.db') }}</h2>').appendTo('#errors');
+                    $("$errors").html('<h2 class="text-center">{{ __('shop.empty.db') }}</h2>');
                 }
 
                 renderProducts(req.data);
             })
-            .fail(function () {
-                $('<h4>{{ __('shop.error') }}</h4>').appendTo('#errors');
+            .fail(function (err) {
+                if (err.status === 403) {
+                    $("#errors").html('<h4>' + err.responseJSON.message + '</h4>');
+                }
+
+                if (err.status === 401) {
+                    document.location.href = '{{ config('app.url') }}' + '/login';
+                }
             });
         }
 
-        getProducts();
+        $(document).ready(function() {
+            getProducts();
+        });
     </script>
 @endsection
 
