@@ -19,9 +19,12 @@ Route::get('/bootstrap', function () {
     return view('layouts.bootstrap');
 });
 
-Route::get('/psd', function () {
-    return view('psd.index');
-});
+
+Route::get('/psd', 'PSDController@index')->name('psd.home');
+Route::get('/psd/about', 'PSDController@about')->name('psd.about');
+Route::get('/psd/services', 'PSDController@services')->name('psd.services');
+Route::get('/psd/blog', 'PSDController@blog')->name('psd.blog');
+Route::get('/psd/features', 'PSDController@features')->name('psd.features');
 
 Auth::routes();
 

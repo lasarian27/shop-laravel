@@ -464,11 +464,31 @@
   border-bottom-color: #E1524B;
 }
 
+.section .happy-clients .col-md-9 div {
+  height: 2px;
+  background: #ececec;
+  margin-left: -85px;
+  position: relative;
+  margin-top: 8px;
+  width: 95%;
+}
+
+.section .happy-clients .col-md-9 div span {
+  height: 6px;
+  width: 6px;
+  display: block;
+  background: #ececec;
+  border-radius: 50%;
+  margin-top: 0;
+  position: absolute;
+  top: -2px;
+}
+
 .section .happy-clients h6 {
   font-size: 16px;
   color: #7F8C8C;
   font-weight: 700;
-  margin-bottom: 43px;
+  margin-bottom: 47px;
 }
 
 .section .happy-clients h3 {
@@ -499,6 +519,19 @@
 
 .section .happy-clients .action a:hover {
   background: #000;
+}
+
+.section-1 {
+  background-color: #F3F3F3;
+  padding: 50px 0;
+}
+
+.section-1 h2 {
+  color: #E1524B;
+}
+
+.section-1 p {
+  color: #7f8c8c;
 }
 
 footer .main-area {
@@ -641,5 +674,40 @@ a:hover {
 
 .collapse:not(.show) {
   display: none;
+}
+
+.breadcrumb-header {
+  background-color: #e9ecef;
+}
+
+.breadcrumb-header .bread {
+  padding: 20px 0;
+  position: relative;
+}
+
+.breadcrumb-header .bread::after {
+  display: inline-block;
+  content: "";
+  border-right: 0.5em solid transparent;
+  border-top: 0.5em solid;
+  border-left: 0.5em solid transparent;
+  position: absolute;
+  bottom: -8px;
+  left: 10px;
+  color: #e9ecef;
+}
+
+.breadcrumb-header .bread ol {
+  justify-content: flex-end;
+}
+
+.breadcrumb-header .bread ol li,
+.breadcrumb-header .bread ol a {
+  color: #6c757d;
+}
+
+.breadcrumb-header .bread h6 {
+  text-transform: uppercase;
+  color: #6c757d;
 }
 

@@ -1,8 +1,11 @@
 @import 'header/index.scss';
 @import 'pages/home/index.scss';
+@import 'pages/about/index.scss';
+@import 'pages/services/index.scss';
+@import 'pages/features/index.scss';
 @import 'footer/index.scss';
 
-a:hover{
+a:hover {
     text-decoration: none;
 }
 
@@ -18,3 +21,37 @@ a:hover{
     }
 }
 
+.breadcrumb-header {
+    background-color: #e9ecef;
+
+    .bread {
+        padding: 20px 0;
+        position: relative;
+
+        &::after {
+            display: inline-block;
+            content: "";
+            border-right: 0.5em solid transparent;
+            border-top: 0.5em solid;
+            border-left: 0.5em solid transparent;
+            position: absolute;
+            bottom: -8px;
+            left: 10px;
+            color: #e9ecef;
+        }
+
+        ol {
+            justify-content: flex-end;
+
+            li, a {
+                color: #6c757d;
+            }
+        }
+
+        h6 {
+            text-transform: uppercase;
+            color: #6c757d;
+        }
+    }
+
+}

@@ -1,52 +1,57 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 
-table{
-    width:100%;
+table {
+    width: 100%;
     text-align: center;
-    img{
-        width:100px;
-    }
-}
-.products .card, .home .card{
-    width: 200px;
-    margin:10px;
-    .card-header{
-        min-height: 180px;
-    }
-}
-.cart, .profile {
-    img{
-        width: 80px;
-    }
-    form{
-        width:100%;
+
+    img {
+        width: 100px;
     }
 }
 
-.products .card-footer{
-    p{
+.products .card, .home .card {
+    width: 200px;
+    margin: 10px;
+
+    .card-header {
+        min-height: 180px;
+    }
+}
+
+.cart, .profile {
+    img {
+        width: 80px;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+.products .card-footer {
+    p {
         font-size: 12px;
         margin: 0;
     }
 }
 
-.user-roles{
+.user-roles {
     display: -webkit-inline-box;
-    p{
+
+    p {
         background: white;
         padding: 0px 5px;
         margin: 0 5px;
         border-radius: 5px;
     }
 }
+
 .row.text-center {
-    display:block;
+    display: block;
 }
