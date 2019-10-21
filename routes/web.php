@@ -19,6 +19,10 @@ Route::get('/bootstrap', function () {
     return view('layouts.bootstrap');
 });
 
+Route::get('/psd', function () {
+    return view('psd.index');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

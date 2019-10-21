@@ -1,0 +1,137 @@
+footer {
+    .main-area {
+        background: #76c7c0 url("/images/Path3.png");
+        background-repeat: repeat-x;
+        background-size: auto 18px;
+
+        .footer-about {
+            padding: 50px 0;
+
+            h1 {
+                font-weight: 700;
+                font-size: 30px;
+                margin-bottom: 25px;
+                color: white;
+
+                span {
+                    font-size: 25px;
+                    font-weight: 400;
+                    font-family: 'Open Sans';
+                    margin-left: -5px;
+                }
+            }
+
+            p {
+                margin-bottom: 25px;
+                font-size: 13px;
+                color: white;
+
+            }
+
+            h6 {
+                font-size: 13px;
+                font-weight: 400;
+                color: white;
+
+                span {
+                    font-size: 20px;
+                    font-weight: 500;
+                    font-style: italic;
+                }
+            }
+        }
+
+        .col-md-4:nth-child(2) {
+            h2 {
+                color: #3b6360;
+                font-size: 20px;
+                font-weight: bold;
+                width: 100%;
+                margin-bottom: 25px;
+            }
+
+            ul {
+                list-style-type: none;
+                padding-left: 15px;
+
+                li {
+                    background-image: url('/images/arrow.png');
+                    background-repeat: no-repeat;
+                    background-position-y: center;
+                    background-position: 0;
+
+                    a {
+                        padding-left: 15px;
+                        color: white;
+                        img {
+                            margin-right: 7px;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .col-md-4:nth-child(3) {
+            h3 {
+                font-size: 20px;
+                font-weight: 500;
+                font-style: italic;
+                color: white;
+                margin-bottom: 25px;
+
+                span {
+                    font-weight: 700;
+                    font-style: initial;
+                    text-transform: uppercase;
+                }
+            }
+
+            .article {
+                display: inline-flex;
+                margin: 8px 0;
+
+                .image-article {
+                    background-color: #62a29e;
+                    border-radius: 5px;
+                    padding: 20px 15px;
+                    text-align: center;
+                }
+
+                .text-article {
+                    margin-left: 15px;
+                    p {
+                        margin: 0;
+                        &:last-child {
+                            color: #3b6360;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .bottom-area {
+        background: #6ab3ad;
+        height: 50px;
+
+        .row {
+            padding: 11px 0;
+
+            h6 {
+                font-size: 12px;
+                color: white;
+                font-weight: 400;
+                margin-bottom: 0;
+                margin-top: 7px;
+            }
+
+            .col-auto {
+                a {
+                    margin: 0 8px;
+                }
+            }
+        }
+    }
+
+}

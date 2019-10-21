@@ -1,0 +1,167 @@
+.header {
+    min-height: 78px;
+    background: #76C7C0 url("/images/Path.png") bottom;
+    background-size: auto 10px;
+    background-repeat: repeat-x;
+
+    .container .row {
+        width: 100%;
+        display: contents;
+
+        h1 {
+            font-weight: 700;
+            font-size: 30px;
+            margin: 0;
+
+            span {
+                font-size: 25px;
+                font-weight: 400;
+                font-family: 'Open Sans';
+                margin-left: -5px;
+
+            }
+        }
+
+        .menu{
+            ul {
+
+                li {
+                    &.active {
+                       a{
+                           background-color: #62a29e;
+                           border-bottom: 3px solid #538B86;
+                       }
+                    }
+
+                    a {
+                        color: white;
+                        font-size: 14px;
+                        font-weight: 500;
+                        padding: 4px 12px;
+                        list-style-type: none;
+                        text-transform: uppercase;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        border-bottom: 3px solid transparent;
+
+                        &:hover {
+                            background-color: #e8645a;
+                            border-bottom: 3px solid #E2534B;
+                        }
+                    }
+
+                    &.show a{
+                        background-color: #e8645a;
+                        border-bottom: 3px solid #E2534B;
+
+                    }
+                }
+
+                .nav-item {
+                    &.dropdown {
+                        background-image: url('/images/arrow-down.png');
+                        background-repeat: no-repeat;
+                        background-position-y: center;
+                        background-position: 13px;
+                        margin:0;
+
+                        .nav-link{
+                            padding: 4px 15px 4px 30px;
+                        }
+                    }
+
+                    #navbarDropdown {
+                        img {
+                            transform: rotate(90deg);
+                            margin-top: -1px;
+                        }
+                    }
+
+                    .layout-dropdown {
+                        position: relative;
+
+                        .dropdown-menu {
+                            margin-top: 12px;
+                            position: absolute;
+                            background-color: #E2534B;
+                            border-radius: 5px;
+                            padding: 5px;
+
+                            &::before {
+                                display: inline-block;
+                                content: "";
+                                border-right: 0.5em solid transparent;
+                                border-bottom: 0.5em solid;
+                                border-left: 0.5em solid transparent;
+                                position: absolute;
+                                top: -7px;
+                                left: 10px;
+                                color: #E2534B;
+                            }
+
+                            .dropdown-item {
+                                padding: 5px 16px 5px 26px;
+                                background-color: #e8645a;
+                                border-radius: 5px;
+                                text-transform: initial;
+                                font-size: 13px;
+                                font-weight: 600;
+                                margin-bottom: 5px;
+                                background-image: url('/images/arrow.png');
+                                background-repeat: no-repeat;
+                                background-position-y: center;
+                                background-position: 13px;
+                                border: none;
+
+                                &:hover {
+                                    background-color: #76C7C0;
+                                    border: none;
+                                }
+
+                                img {
+                                    margin-right: 7px;
+                                    margin-top: -1px;
+                                }
+
+                                &:last-child {
+                                    margin-bottom:0;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+        .container{
+            .row > .menu > ul > li {
+                margin: 0 1px;
+            }
+        }
+    }
+
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) {
+        .container{
+            .row > .menu > ul > li {
+                margin: 0 7px;
+            }
+        }
+    }
+}
