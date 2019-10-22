@@ -46,97 +46,88 @@
         <div class="container">
             <div class="intro">
                 <div class="row">
-                    <div class="col-10">
+                    <div class="col">
                         <h4>Some our top services</h4>
                         <p>Ut eleifend libero sed neque rhoncus consequat. Maecenas tincidunt, augue et rutrum
                             condimentum,
                             libero lectus mattis orci, ut commodo. </p>
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-md-auto">
                         <button class="btn">View More</button>
                     </div>
                 </div>
             </div>
 
             <div class="services">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="head">
-                                    <img src="images/like.png" alt="">
-                                    <h5>Suspendisse</h5>
-                                </div>
 
-                                <p>
-                                    Quisque id tellus quis risus vehicula vehicula ut turpis. In eros nulla, placerat
-                                    vitae
-                                    at, vehicula ut nunc.
-                                </p>
-                            </div>
-
-                            <div class="card-footer">
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="head">
+                            <img src="images/like.png" alt="">
+                            <h5>Suspendisse</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Quisque id tellus quis risus vehicula vehicula ut turpis. In eros nulla, placerat
+                                vitae
+                                at, vehicula ut nunc.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div>
                                 <button class="btn">read more</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="head">
-                                    <img src="images/key.png" alt="">
-                                    <h5>MAECENAS</h5>
-                                </div>
-
-                                <p>
-                                    Ut eleifend libero sed neque rhoncus consequat. Maecenas tincidunt, augue et rutrum
-                                    condimentum, libero lectus mattis orci, ut commodo.
-                                </p>
-                            </div>
-
-                            <div class="card-footer">
+                    <div class="card">
+                        <div class="head">
+                            <img src="images/key.png" alt="">
+                            <h5>MAECENAS</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Ut eleifend libero sed neque rhoncus consequat. Maecenas tincidunt, augue et rutrum
+                                condimentum, libero lectus mattis orci, ut commodo.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div>
                                 <button class="btn">read more</button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="head">
-                                    <img src="images/flag.png" alt="">
-                                    <h5>Aliquam</h5>
-                                </div>
-
-                                <p>
-                                    Vivamus eget ante bibendum arcu vehicula ultricies. Integer venenatis mattis nisl,
-                                    vitae
-                                    pulvinar dui tempor non.
-                                </p>
-                            </div>
-
-                            <div class="card-footer">
+                    <div class="card">
+                        <div class="head">
+                            <img src="images/flag.png" alt="">
+                            <h5>Aliquam</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Vivamus eget ante bibendum arcu vehicula ultricies. Integer venenatis mattis nisl,
+                                vitae
+                                pulvinar dui tempor non.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div>
                                 <button class="btn">read more</button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="head">
-                                    <img src="images/habitasse.png" alt="">
-                                    <h5>Habitasse</h5>
-                                </div>
-
-                                <p>
-                                    Astehicula ultricies. Integer venenatis mattis nisl, vitae pulvinar dui tempor non.
-                                </p>
-                            </div>
-
-                            <div class="card-footer">
+                    <div class="card">
+                        <div class="head">
+                            <img src="images/habitasse.png" alt="">
+                            <h5>Habitasse</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Astehicula ultricies. Integer venenatis mattis nisl, vitae pulvinar dui tempor non.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div>
                                 <button class="btn">read more</button>
                             </div>
                         </div>
@@ -157,7 +148,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <h6>Why Choose Us ?</h6>
+                        <h5>Why Choose Us ?</h5>
 
                         <ul>
                             <li><p class="mb-0">Quisque at massa ipsum</p></li>
@@ -196,8 +187,9 @@
                             <p class="mb-0"> Curabitur quis nisl in leo euismod venenatis eu in diam. Etiam auctor diam
                                 pellentesque lectus
                                 vehicula mattis. Nulla ac massa at dolor condimentum</p>
+                            <span>Jhon Doe</span>
                         </div>
-                        <span>Jhon Doe</span>
+
                     </div>
                 </div>
             </div>
@@ -205,13 +197,23 @@
 
         <div class="happy-clients">
             <div class="container">
+
+                <div class="happy-head">
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <h6>Our Happy Clients</h6>
+                        </div>
+                        <div class="col line">
+                            <div><span></span></div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <button class="arrow-left"></button>
+                            <button class="arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="col-md-3">
-                        <h6>Our Happy Clients</h6>
-                    </div>
-                    <div class="col-md-9">
-                        <div><span></span></div>
-                    </div>
                     <div class="col-md-12">
                         <div class="main">
                             <div class="variable-width">
@@ -222,7 +224,6 @@
                                 <div><img src="/images/jquery.png"></div>
                                 <div><img src="/images/jquery.png"></div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -298,9 +299,7 @@
                 infinite: true,
                 speed: 300,
                 slidesToShow: 5,
-                centerMode: true,
-                nextArrow: '<span class="arrow-right"></span>',
-                prevArrow: '<span class="arrow-left"></span>',
+                arrows: false,
                 responsive: [
                     {
 
@@ -342,6 +341,14 @@
                     }]
             });
         });
+
+        $(document).on('click', '.arrow-left', function() {
+            $('.variable-width').slick('slickPrev');
+        })
+
+        $(document).on('click', '.arrow-right', function() {
+            $('.variable-width').slick('slickNext');
+        })
     </script>
 @endsection
 

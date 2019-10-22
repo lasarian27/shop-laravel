@@ -50,16 +50,13 @@
   border-bottom: 3px solid #E2534B;
 }
 
-.header .container .row .menu ul .nav-item.dropdown {
+.header .container .row .menu ul .nav-item.dropdown .nav-link {
+  padding: 4px 15px 4px 30px;
   background-image: url("/images/arrow-down.png");
   background-repeat: no-repeat;
   background-position-y: center;
   background-position: 13px;
   margin: 0;
-}
-
-.header .container .row .menu ul .nav-item.dropdown .nav-link {
-  padding: 4px 15px 4px 30px;
 }
 
 .header .container .row .menu ul .nav-item #navbarDropdown img {
@@ -132,6 +129,10 @@
   }
 }
 
+#homeCarousel {
+  padding-bottom: 50px;
+}
+
 #homeCarousel .carousel-inner .carousel-item {
   min-height: 490px;
   width: 100%;
@@ -167,7 +168,7 @@
 }
 
 #homeCarousel .carousel-indicators {
-  bottom: -35px;
+  bottom: 12px;
   margin: 0;
 }
 
@@ -207,8 +208,7 @@
 }
 
 .section {
-  padding-top: 45px;
-  background: #F3F3F3 url("/images/Path.png") no-repeat bottom;
+  background: trasparent url("/images/Path.png") no-repeat bottom;
 }
 
 .section .intro {
@@ -217,17 +217,17 @@
   border-radius: 5px;
 }
 
-.section .intro .col-10 h4 {
+.section .intro h4 {
   font-size: 30px;
   margin: 0;
 }
 
-.section .intro .col-10 p {
+.section .intro p {
   font-size: 13px;
   margin: 0;
 }
 
-.section .intro .col-2 button {
+.section .intro button {
   float: right;
   text-transform: uppercase;
   font-size: 20px;
@@ -249,27 +249,23 @@
   border: none;
   border-bottom: 3px solid #E5E6E6;
   background-color: #F8F8F8;
-  min-height: 320px;
   cursor: pointer;
+  margin-bottom: 40px;
 }
 
-.section .services .card .card-body {
-  padding-bottom: 0;
-}
-
-.section .services .card .card-body .head {
+.section .services .card .head {
   text-align: center;
   padding: 25px 0;
 }
 
-.section .services .card .card-body .head h5 {
+.section .services .card .head h5 {
   font-size: 16px;
   font-weight: 800;
   margin-top: 8px;
   text-transform: uppercase;
 }
 
-.section .services .card .card-body p {
+.section .services .card p {
   text-align: center;
   font-size: 13px;
   margin: 0;
@@ -280,15 +276,20 @@
   background: transparent;
 }
 
+.section .services .card .card-footer div {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: -25px;
+}
+
 .section .services .card .card-footer .btn {
-  margin-bottom: -43px;
-  width: 93%;
   font-size: 14px;
   color: white;
   padding: 13px 0;
-  margin-left: 10px;
   background-color: #62a29e;
   border-bottom: 3px solid #538B86;
+  width: 100%;
 }
 
 .section .services .card:hover {
@@ -305,10 +306,10 @@
   background-repeat: repeat-x;
   background-size: auto 18px;
   padding: 45px 0;
+  text-align: center;
 }
 
 .section .about h1 {
-  text-align: center;
   text-transform: uppercase;
   font-size: 39px;
   color: #E1524B;
@@ -317,11 +318,10 @@
 
 .section .about p {
   font-size: 13px;
-  text-align: center;
+  margin: 0;
 }
 
 .section .why-us {
-  background: #f3f3f3;
   padding: 50px 0;
 }
 
@@ -329,19 +329,28 @@
   font-size: 16px;
   color: #7F8C8C;
   font-weight: 700;
+  margin-bottom: 25px;
 }
 
-.section .why-us .col-md-3:first-child h6 {
+.section .why-us h5 {
   margin-bottom: 43px;
-}
-
-.section .why-us .col-md-3:last-child h6 {
-  margin-bottom: 27px;
-}
-
-.section .why-us .col-md-3:last-child span {
-  padding-left: 60px;
+  font-size: 16px;
   color: #7F8C8C;
+  font-weight: 700;
+}
+
+.section .why-us h3 {
+  margin-bottom: 27px;
+  font-size: 16px;
+  color: #7F8C8C;
+  font-weight: 700;
+}
+
+.section .why-us span {
+  color: #7F8C8C;
+  position: absolute;
+  bottom: -30px;
+  left: 60px;
 }
 
 .section .why-us p {
@@ -390,8 +399,9 @@
 }
 
 .section .why-us .gauges {
-  padding-top: 45px;
+  padding: 40px 0;
   display: flex;
+  justify-content: center;
 }
 
 .section .why-us .gauges #gauge1,
@@ -405,12 +415,16 @@
 
 .section .happy-clients {
   background: #f3f3f3;
-  padding: 10px 0 50px 0;
+  padding: 0 0 50px 0;
+}
+
+.section .happy-clients .happy-head {
+  margin-bottom: 25px;
 }
 
 .section .happy-clients .main {
   display: block;
-  margin: 0 auto;
+  margin: 0 -15px;
 }
 
 .section .happy-clients .main .variable-width .slick-slide {
@@ -424,7 +438,7 @@
   margin: 0 15px;
 }
 
-.section .happy-clients .main .variable-width .arrow-right {
+.section .happy-clients .arrow-right {
   background: #98a3a3 url(/images/single-arrow-right.png) no-repeat;
   display: inline-block;
   width: 40px;
@@ -434,17 +448,15 @@
   background-position-x: center;
   border-radius: 5px;
   border-bottom: 3px solid #7f8c8c;
-  position: absolute;
-  right: 0;
-  top: -80px;
+  outline: none;
 }
 
-.section .happy-clients .main .variable-width .arrow-right:hover {
+.section .happy-clients .arrow-right:hover {
   background-color: #E1524B;
   border-bottom-color: #E1524B;
 }
 
-.section .happy-clients .main .variable-width .arrow-left {
+.section .happy-clients .arrow-left {
   background: #98a3a3 url(/images/single-arrow-left.png) no-repeat;
   display: inline-block;
   width: 40px;
@@ -454,30 +466,26 @@
   background-position-x: center;
   border-radius: 5px;
   border-bottom: 3px solid #7f8c8c;
-  position: absolute;
-  right: 60px;
-  top: -80px;
+  outline: none;
 }
 
-.section .happy-clients .main .variable-width .arrow-left:hover {
+.section .happy-clients .arrow-left:hover {
   background-color: #E1524B;
   border-bottom-color: #E1524B;
 }
 
-.section .happy-clients .col-md-9 div {
+.section .happy-clients .line div {
   height: 2px;
-  background: #ececec;
-  margin-left: -85px;
+  background: #e1e2e2;
   position: relative;
-  margin-top: 8px;
-  width: 95%;
+  margin: 20px 0;
 }
 
-.section .happy-clients .col-md-9 div span {
+.section .happy-clients .line div span {
   height: 6px;
   width: 6px;
   display: block;
-  background: #ececec;
+  background: #e1e2e2;
   border-radius: 50%;
   margin-top: 0;
   position: absolute;
@@ -488,7 +496,7 @@
   font-size: 16px;
   color: #7F8C8C;
   font-weight: 700;
-  margin-bottom: 47px;
+  margin: 8px 0;
 }
 
 .section .happy-clients h3 {
@@ -541,7 +549,7 @@ footer .main-area {
 }
 
 footer .main-area .footer-about {
-  padding: 50px 0;
+  padding: 50px 0 20px 0;
 }
 
 footer .main-area .footer-about h1 {
@@ -576,7 +584,7 @@ footer .main-area .footer-about h6 span {
   font-style: italic;
 }
 
-footer .main-area .col-md-4:nth-child(2) h2 {
+footer .main-area h2 {
   color: #3b6360;
   font-size: 20px;
   font-weight: bold;
@@ -584,28 +592,25 @@ footer .main-area .col-md-4:nth-child(2) h2 {
   margin-bottom: 25px;
 }
 
-footer .main-area .col-md-4:nth-child(2) ul {
+footer .main-area ul {
   list-style-type: none;
   padding-left: 15px;
 }
 
-footer .main-area .col-md-4:nth-child(2) ul li {
+footer .main-area ul li a {
   background-image: url("/images/arrow.png");
   background-repeat: no-repeat;
   background-position-y: center;
   background-position: 0;
-}
-
-footer .main-area .col-md-4:nth-child(2) ul li a {
   padding-left: 15px;
   color: white;
 }
 
-footer .main-area .col-md-4:nth-child(2) ul li a img {
+footer .main-area ul li a img {
   margin-right: 7px;
 }
 
-footer .main-area .col-md-4:nth-child(3) h3 {
+footer .main-area h3 {
   font-size: 20px;
   font-weight: 500;
   font-style: italic;
@@ -613,43 +618,50 @@ footer .main-area .col-md-4:nth-child(3) h3 {
   margin-bottom: 25px;
 }
 
-footer .main-area .col-md-4:nth-child(3) h3 span {
+footer .main-area h3 span {
   font-weight: 700;
   font-style: initial;
   text-transform: uppercase;
 }
 
-footer .main-area .col-md-4:nth-child(3) .article {
+footer .main-area .article {
   display: inline-flex;
-  margin: 8px 0;
+  margin-bottom: 8px;
 }
 
-footer .main-area .col-md-4:nth-child(3) .article .image-article {
+footer .main-area .article .image-article {
   background-color: #62a29e;
   border-radius: 5px;
   padding: 20px 15px;
   text-align: center;
+  margin-right: 15px;
 }
 
-footer .main-area .col-md-4:nth-child(3) .article .text-article {
-  margin-left: 15px;
-}
-
-footer .main-area .col-md-4:nth-child(3) .article .text-article p {
+footer .main-area .article .text-article p {
   margin: 0;
 }
 
-footer .main-area .col-md-4:nth-child(3) .article .text-article p:last-child {
+footer .main-area .article .text-article p:last-child {
   color: #3b6360;
+}
+
+footer .main-area .wrap-column {
+  margin-bottom: 30px;
 }
 
 footer .bottom-area {
   background: #6ab3ad;
   height: 50px;
+  padding: 8px 0;
 }
 
-footer .bottom-area .row {
-  padding: 11px 0;
+footer .bottom-area .row ul {
+  list-style-type: none;
+  display: flex;
+}
+
+footer .bottom-area .row ul li a {
+  display: block;
 }
 
 footer .bottom-area .row h6 {
@@ -666,6 +678,10 @@ footer .bottom-area .row .col-auto a {
 
 a:hover {
   text-decoration: none;
+}
+
+body {
+  background: #F3F3F3;
 }
 
 .fade:not(.show) {

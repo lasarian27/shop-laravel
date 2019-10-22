@@ -9,6 +9,10 @@ a:hover {
     text-decoration: none;
 }
 
+body {
+    background: #F3F3F3;
+}
+
 .fade {
     &:not(.show) {
         opacity: 0;
