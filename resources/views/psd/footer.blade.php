@@ -73,23 +73,23 @@
 
                             <div class="article">
                                 <div class="image-article">
-                                    <img src="images/image.png" alt="">
+                                    <img src="/images/image.png" alt="">
                                 </div>
 
                                 <div class="text-article">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                    <p>26 May, 2013</p>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                                    <div>26 May, 2013</div>
                                 </div>
                             </div>
 
                             <div class="article">
                                 <div class="image-article">
-                                    <img src="images/image.png" alt="">
+                                    <img src="/images/image.png" alt="">
                                 </div>
 
                                 <div class="text-article">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                    <p>26 May, 2013</p>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                                    <div>26 May, 2013</div>
                                 </div>
                             </div>
                         </div>
@@ -111,22 +111,22 @@
                     <ul class="m-0">
                         <li>
                             <a href="#">
-                                <img src="images/Facebook.png" alt="">
+                                <img src="/images/Facebook.png" alt="">
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="images/g%20plus.png" alt="">
+                                <img src="/images/g%20plus.png" alt="">
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="images/twitter.png" alt="">
+                                <img src="/images/twitter.png" alt="">
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="images/rss.png" alt="">
+                                <img src="/images/rss.png" alt="">
                             </a>
                         </li>
                     </ul>

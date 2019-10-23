@@ -1,0 +1,131 @@
+.btn-modus {
+    background: #98a3a3;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    border-bottom: 3px solid #7f8c8c;
+    outline: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    font-size: 14px;
+    margin-right: 15px;
+
+    &.active {
+        background-color: #62a29e;
+        border-bottom: 3px solid #538B86;
+    }
+
+    &:hover {
+        background-color: #E1524B;
+        border-bottom-color: #E1524B;
+        color: white;
+    }
+}
+
+.btn-big-modus {
+    float: right;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 12px 21px;
+    background-color: #e8645a;
+    border-bottom: 3px solid #E2534B;
+    color: white;
+
+    &:hover {
+        background-color: #76caca;
+        border-bottom-color: #62bdbd;
+        color: white;
+    }
+}
+
+.portfolio {
+    margin: 40px 0;
+
+    .modus-buttons {
+        margin-bottom: 40px;
+    }
+
+    .item {
+        min-height: 265px;
+        margin-bottom: 38px;
+
+        .image-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f8f8;
+            height: 100%;
+
+            img {
+                width: 105px;
+            }
+        }
+
+        .second-half .row {
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #7f8c8c;
+            margin-bottom: 25px;
+        }
+
+        .text {
+            font-size: 13px;
+            color: #7f8c8c;
+            margin-bottom: 50px;
+        }
+
+        .item-bottom {
+            a {
+                font-size: 20px;
+                color: #7f8c8c;
+
+                i {
+                    color: white;
+                    background: #538B86;
+                    padding: 10px;
+                    border-radius: 5px;
+                }
+
+                span {
+                    margin-left: 15px;
+                }
+
+                &:hover {
+                    i {
+                        background: #E1524B;
+                    }
+
+                    span {
+                        color: #E1524B;
+                    }
+                }
+            }
+        }
+    }
+
+    .pagination {
+        justify-content: center;
+
+        .previous-label {
+            margin-right: 20px;
+        }
+
+        .next-label {
+            margin-left: 20px;
+        }
+
+        .page-item {
+            margin-right: 10px;
+        }
+
+        .pagination-button {
+            margin: 0;
+            font-weight: 700;
+            font-size: 16px;
+        }
+    }
+}

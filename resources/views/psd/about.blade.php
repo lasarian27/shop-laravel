@@ -4,10 +4,10 @@
     <div class="breadcrumb-header">
         <div class="container ">
             <div class="row bread">
-                <div class="col-md-4">
+                <div class="col-auto">
                     <h6>About US</h6>
                 </div>
-                <div class="col-md-8">
+                <div class="col">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">
                             <li class="breadcrumb-item"><a href="{{url(route('psd.home'))}}">Home</a></li>
@@ -20,12 +20,12 @@
     </div>
 
 
-    <div class="about ">
+    <div class="about">
 
         <div class="section-1 section">
             <div class="container">
                 <h2>Donec faucibus ultricies congue</h2>
-                <p>Maecenas eget turpis turpis. Nunc vel metus augue. Aenean euismod cursus ligula eget dapibus. Praeget
+                <p class="mb-0">Maecenas eget turpis turpis. Nunc vel metus augue. Aenean euismod cursus ligula eget dapibus. Praeget
                     euismod sem scleerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitus vitae velit in
                     nemorbi tristique senectus et netus et malesuada fames ac turpis egestat.</p>
 
@@ -68,12 +68,11 @@
                         <div class="col-md-3">
                             <h6>What Client's Say ?</h6>
                             <div class="client">
-                                <p class="mb-0"> Curabitur quis nisl in leo euismod venenatis eu in diam. Etiam auctor
-                                    diam
+                                <p class="mb-0"> Curabitur quis nisl in leo euismod venenatis eu in diam. Etiam auctor diam
                                     pellentesque lectus
                                     vehicula mattis. Nulla ac massa at dolor condimentum</p>
+                                <span>Jhon Doe</span>
                             </div>
-                            <span>Jhon Doe</span>
                         </div>
                     </div>
                 </div>
@@ -83,7 +82,13 @@
         </div>
 
     </div>
-
+    <div class="about">
+        <div class="container">
+            <h1>Why modus versus?</h1>
+            <p>Capacitance cascading integer reflective interface data development high bus cache dithering
+                transponder. </p>
+        </div>
+    </div>
 @endsection
 
 

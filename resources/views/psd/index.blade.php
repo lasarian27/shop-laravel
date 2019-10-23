@@ -1,7 +1,7 @@
 @extends('layouts.psd')
 
 @section('content')
-    <div id="homeCarousel" class="carousel slide" data-ride="false">
+    <div id="homeCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#homeCarousel" data-slide-to="1"></li>
@@ -63,11 +63,11 @@
 
                 <div class="card-deck">
                     <div class="card">
-                        <div class="head">
-                            <img src="images/like.png" alt="">
-                            <h5>Suspendisse</h5>
-                        </div>
                         <div class="card-body">
+                            <div class="head">
+                                <img src="images/like.png" alt="">
+                                <h5>Suspendisse</h5>
+                            </div>
                             <p>
                                 Quisque id tellus quis risus vehicula vehicula ut turpis. In eros nulla, placerat
                                 vitae
@@ -75,35 +75,31 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <div>
                                 <button class="btn">read more</button>
-                            </div>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div class="head">
-                            <img src="images/key.png" alt="">
-                            <h5>MAECENAS</h5>
-                        </div>
                         <div class="card-body">
+                            <div class="head">
+                                <img src="images/key.png" alt="">
+                                <h5>MAECENAS</h5>
+                            </div>
                             <p>
                                 Ut eleifend libero sed neque rhoncus consequat. Maecenas tincidunt, augue et rutrum
                                 condimentum, libero lectus mattis orci, ut commodo.
                             </p>
                         </div>
                         <div class="card-footer">
-                            <div>
                                 <button class="btn">read more</button>
-                            </div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="head">
-                            <img src="images/flag.png" alt="">
-                            <h5>Aliquam</h5>
-                        </div>
                         <div class="card-body">
+                            <div class="head">
+                                <img src="images/flag.png" alt="">
+                                <h5>Aliquam</h5>
+                            </div>
                             <p>
                                 Vivamus eget ante bibendum arcu vehicula ultricies. Integer venenatis mattis nisl,
                                 vitae
@@ -111,25 +107,21 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <div>
                                 <button class="btn">read more</button>
-                            </div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="head">
-                            <img src="images/habitasse.png" alt="">
-                            <h5>Habitasse</h5>
-                        </div>
                         <div class="card-body">
+                            <div class="head">
+                                <img src="images/habitasse.png" alt="">
+                                <h5>Habitasse</h5>
+                            </div>
                             <p>
                                 Astehicula ultricies. Integer venenatis mattis nisl, vitae pulvinar dui tempor non.
                             </p>
                         </div>
                         <div class="card-footer">
-                            <div>
                                 <button class="btn">read more</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -139,8 +131,7 @@
         <div class="about">
             <div class="container">
                 <h1>Why modus versus?</h1>
-                <p>Capacitance cascading integer reflective interface data development high bus cache dithering
-                    transponder. </p>
+                <p>Capacitance cascading integer reflective interface data development high bus cache dithering transponder.</p>
             </div>
         </div>
 
@@ -161,7 +152,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <p>Curabitur quis nisl in leo euismod venenatis eu in diam. Etiam auctor diam pellentesque
+                        <p class="mb-0">Curabitur quis nisl in leo euismod venenatis eu in diam. Etiam auctor diam pellentesque
                             lectus
                             vehicula mattis. Nulla ac massa at dolor condimentum eleifend vitae vitae urna.</p>
 
@@ -200,19 +191,20 @@
 
                 <div class="happy-head">
                     <div class="row">
-                        <div class="col-md-auto">
+                        <div class="col-md-12">
                             <h6>Our Happy Clients</h6>
-                        </div>
-                        <div class="col line">
-                            <div><span></span></div>
-                        </div>
-
-                        <div class="col-md-auto">
-                            <button class="arrow-left"></button>
-                            <button class="arrow-right"></button>
+                            <div class="line">
+                                <div><span></span></div>
+                            </div>
+                            <div>
+                                <button class="arrow-left"></button>
+                                <span class="space"></span>
+                                <button class="arrow-right"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main">

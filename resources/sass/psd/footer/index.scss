@@ -96,7 +96,9 @@ footer {
             }
 
             .text-article {
-                p {
+                div {
+                    font-size: 13px;
+                    color: white;
                     margin: 0;
                     &:last-child {
                         color: #3b6360;

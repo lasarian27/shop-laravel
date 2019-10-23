@@ -4,10 +4,7 @@
     background-size: auto 10px;
     background-repeat: repeat-x;
 
-    .container .row {
-        width: 100%;
-        display: contents;
-
+    .container {
         h1 {
             font-weight: 700;
             font-size: 30px;
@@ -34,7 +31,7 @@
                     }
 
                     a {
-                        color: white;
+                        color: white !important;
                         font-size: 14px;
                         font-weight: 500;
                         padding: 4px 12px;
@@ -58,6 +55,7 @@
                 }
 
                 .nav-item {
+
                     &.dropdown .nav-link {
                         padding: 4px 15px 4px 30px;
 
@@ -135,20 +133,10 @@
 
     }
 
-    // Small devices (landscape phones, 576px and up)
-    @media (min-width: 576px) {
-
-    }
-
-    // Medium devices (tablets, 768px and up)
-    @media (min-width: 768px) {
-
-    }
-
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
         .container {
-            .row > .menu > ul > li {
+            .menu > ul > li {
                 margin: 0 1px;
             }
         }
@@ -157,7 +145,7 @@
     // Extra large devices (large desktops, 1200px and up)
     @media (min-width: 1200px) {
         .container {
-            .row > .menu > ul > li {
+            .menu > ul > li {
                 margin: 0 7px;
             }
         }

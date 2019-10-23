@@ -34,4 +34,9 @@ class PSDController extends Controller
     {
         return view('psd.features');
     }
+
+    public function portfolio()
+    {
+        return view('psd.portfolio');
+    }
 }
