@@ -666,11 +666,11 @@
 }
 
 .portfolio .pagination .next-label {
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 .portfolio .pagination .page-item {
-  margin-right: 10px;
+  margin: 0 5px;
 }
 
 .portfolio .pagination .pagination-button {
