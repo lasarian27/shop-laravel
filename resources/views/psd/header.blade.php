@@ -52,7 +52,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacts</a>
+                        <a class="nav-link" href="{{url(route('psd.contacts'))}}">Contacts</a>
                     </li>
 
                     <li class="nav-item">

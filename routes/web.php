@@ -26,6 +26,7 @@ Route::get('/psd/services', 'PSDController@services')->name('psd.services');
 Route::get('/psd/blog', 'PSDController@blog')->name('psd.blog');
 Route::get('/psd/features', 'PSDController@features')->name('psd.features');
 Route::get('/psd/portfolio', 'PSDController@portfolio')->name('psd.portfolio');
+Route::get('/psd/contacts', 'PSDController@contacts')->name('psd.contacts');
 
 Auth::routes();
 

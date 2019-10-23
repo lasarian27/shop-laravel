@@ -5,11 +5,11 @@
     <div class="breadcrumb-header">
         <div class="container ">
             <div class="row bread">
-                <div class="col-md-4">
+                <div class="col-auto">
                     <h6>Portofolio</h6>
                 </div>
 
-                <div class="col-md-8">
+                <div class="col">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">
                             <li class="breadcrumb-item"><a href="{{url(route('psd.home'))}}">Home</a></li>
@@ -24,11 +24,11 @@
     <div class="portfolio">
         <div class="container">
             <div class="modus-buttons">
-                <button class="btn btn-modus">All</button>
-                <button class="btn btn-modus">Web design</button>
-                <button class="btn btn-modus">Logo Design</button>
-                <button class="btn btn-modus">Photography</button>
-                <button class="btn btn-modus active">Wordpress</button>
+                <div><button class="btn btn-modus">All</button> </div>
+                <div><button class="btn btn-modus">Web design</button> </div>
+                <div><button class="btn btn-modus">Logo Design</button></div>
+                <div><button class="btn btn-modus">Photography</button></div>
+                <div><button class="btn btn-modus active">Wordpress</button></div>
             </div>
 
             <div class="item">
@@ -164,7 +164,7 @@
                         </a>
                     </li>
                     <li class="page-item"><a class="btn-modus pagination-button" href="#">1</a></li>
-                    <li class="page-item"><a class="btn-modus pagination-button" href="#">2</a></li>
+                    <li class="page-item"><a class="btn-modus pagination-button active" href="#">2</a></li>
                     <li class="page-item"><a class="btn-modus pagination-button" href="#">3</a></li>
                     <li class="page-item"><a class="btn-modus pagination-button" href="#">4</a></li>
                     <li class="page-item"><a class="btn-modus pagination-button" href="#">5</a></li>

@@ -9,7 +9,6 @@
     text-transform: uppercase;
     padding: 4px 12px;
     font-size: 14px;
-    margin-right: 15px;
 
     &.active {
         background-color: #62a29e;
@@ -44,6 +43,11 @@
 
     .modus-buttons {
         margin-bottom: 40px;
+
+        div {
+            margin: 5px;
+            display: inline-block;
+        }
     }
 
     .item {
@@ -56,6 +60,7 @@
             align-items: center;
             background-color: #f8f8f8;
             height: 100%;
+            padding: 20px 0;
 
             img {
                 width: 105px;
@@ -119,7 +124,7 @@
         }
 
         .page-item {
-            margin: 0 5px;
+            margin: 5px;
         }
 
         .pagination-button {
