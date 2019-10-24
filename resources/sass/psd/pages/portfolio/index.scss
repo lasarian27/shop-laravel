@@ -51,7 +51,7 @@
     }
 
     .item {
-        min-height: 265px;
+        min-height: 235px;
         margin-bottom: 38px;
 
         .image-item {
@@ -60,7 +60,8 @@
             align-items: center;
             background-color: #f8f8f8;
             height: 100%;
-            padding: 20px 0;
+            border-bottom: 3px solid #E5E6E6;
+            border-radius: 5px;
 
             img {
                 width: 105px;
@@ -80,13 +81,14 @@
         .text {
             font-size: 13px;
             color: #7f8c8c;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
         }
 
         .item-bottom {
             a {
                 font-size: 20px;
                 color: #7f8c8c;
+                display: inline-block;
 
                 i {
                     color: white;
@@ -124,7 +126,7 @@
         }
 
         .page-item {
-            margin: 5px;
+            margin: 0 5px 5px 5px;
         }
 
         .pagination-button {

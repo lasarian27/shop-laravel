@@ -10,23 +10,29 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <div>
-                    <h3>Vestibulum</h3>
-                    <p>Maecenas tincidunt, augue et rutrum condimentum, <br> libero lectus mattis orci, ut commodo.</p>
+                <div class="layout-item">
+                    <div>
+                        <h3>Vestibulum</h3>
+                        <p>Maecenas tincidunt, augue et rutrum condimentum, <br> libero lectus mattis orci, ut commodo.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <div>
-                    <h3>Vestibulum</h3>
-                    <p>Maecenas tincidunt, augue et rutrum condimentum, <br> libero lectus mattis orci, ut commodo.</p>
+                <div class="layout-item">
+                    <div>
+                        <h3>Vestibulum2</h3>
+                        <p>Maecenas tincidunt, augue et rutrum condimentum, <br> libero lectus mattis orci, ut commodo.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <div>
-                    <h3>Vestibulum</h3>
-                    <p>Maecenas tincidunt, augue et rutrum condimentum, <br> libero lectus mattis orci, ut commodo.</p>
+                <div class="layout-item">
+                    <div>
+                        <h3>Vestibulum3</h3>
+                        <p>Maecenas tincidunt, augue et rutrum condimentum, <br> libero lectus mattis orci, ut commodo.</p>
+                    </div>
                 </div>
             </div>
         </div>

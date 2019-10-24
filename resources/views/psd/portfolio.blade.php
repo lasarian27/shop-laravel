@@ -6,7 +6,7 @@
         <div class="container ">
             <div class="row bread">
                 <div class="col-auto">
-                    <h6>Portofolio</h6>
+                    <h6 class="mb-0">Portofolio</h6>
                 </div>
 
                 <div class="col">
@@ -24,7 +24,7 @@
     <div class="portfolio">
         <div class="container">
             <div class="modus-buttons">
-                <div><button class="btn btn-modus">All</button> </div>
+                <div class="ml-0"><button class="btn btn-modus">All</button> </div>
                 <div><button class="btn btn-modus">Web design</button> </div>
                 <div><button class="btn btn-modus">Logo Design</button></div>
                 <div><button class="btn btn-modus">Photography</button></div>
@@ -157,7 +157,7 @@
             </div>
 
             <nav>
-                <ul class="pagination flex-wrap">
+                <ul class="pagination flex-wrap mb-0">
                     <li class="page-item previous-label">
                         <a class="btn-modus pagination-button" href="#" aria-label="Previous">
                             <i class="fas fa-chevron-left"></i>

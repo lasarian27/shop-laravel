@@ -1,0 +1,79 @@
+.head {
+    background: #fafafa;
+    padding: 4px 0;
+
+    ul {
+        list-style-type: none;
+        display: flex;
+    }
+
+    .mini-menu {
+        li {
+            padding: 0 5px;
+            border-right: 2px solid #a2a2a2;
+
+            a {
+                color: #a2a2a2;
+                font-size: 12px;
+                text-transform: capitalize;
+            }
+        }
+    }
+
+    .social-logo {
+        li {
+            margin-right: 4px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            a {
+                background-repeat: no-repeat;
+                background-position-y: center;
+                background-position-x: center;
+                background-size: 14px;
+                width: 15px;
+                height: 15px;
+                padding: 0 10px;
+                background-color: #c7c7c7;
+            }
+
+            &.rss {
+                a {
+                    background-image: url('/images/1.png');
+                }
+            }
+
+            &.mail {
+                a {
+                    background-image: url('/images/2.png');
+                }
+            }
+
+            &.skype {
+                a {
+                    background-image: url('/images/3.png');
+                }
+            }
+
+            &.facebook {
+                a {
+                    background-image: url('/images/4.png');
+                }
+            }
+
+            &.dots {
+                a {
+                    background-image: url('/images/5.png');
+                }
+            }
+
+            &.google {
+                a {
+                    background-image: url('/images/6.png');
+                }
+            }
+        }
+    }
+}

@@ -5,7 +5,7 @@
         <div class="container ">
             <div class="row bread">
                 <div class="col-auto">
-                    <h6>About US</h6>
+                    <h6 class="mb-0">About US</h6>
                 </div>
                 <div class="col">
                     <nav aria-label="breadcrumb">

@@ -24,9 +24,12 @@ Route::get('/psd', 'PSDController@index')->name('psd.home');
 Route::get('/psd/about', 'PSDController@about')->name('psd.about');
 Route::get('/psd/services', 'PSDController@services')->name('psd.services');
 Route::get('/psd/blog', 'PSDController@blog')->name('psd.blog');
+Route::get('/psd/blog-item', 'PSDController@blogItem')->name('psd.blog-item');
 Route::get('/psd/features', 'PSDController@features')->name('psd.features');
 Route::get('/psd/portfolio', 'PSDController@portfolio')->name('psd.portfolio');
 Route::get('/psd/contacts', 'PSDController@contacts')->name('psd.contacts');
+
+Route::get('/psd2', 'PSD2Controller@index')->name('psd2.home');
 
 Auth::routes();
 

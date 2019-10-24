@@ -6,7 +6,7 @@
         <div class="container ">
             <div class="row bread">
                 <div class="col-md-4">
-                    <h6>Services</h6>
+                    <h6 class="mb-0">Services</h6>
                 </div>
                 <div class="col-md-8">
                     <nav aria-label="breadcrumb">
