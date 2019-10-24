@@ -62,3 +62,156 @@
   background-image: url("/images/6.png");
 }
 
+.navbar {
+  display: block;
+}
+
+.navbar .navbar-brand {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar .navbar-brand img {
+  height: 70px;
+  margin: 30px 0;
+}
+
+.navbar .collapse .navbar-nav {
+  width: 100%;
+}
+
+.navbar .collapse .navbar-nav .nav-item {
+  border-left: 1px solid #a2a2a2;
+}
+
+.navbar .collapse .navbar-nav .nav-item.active {
+  border-top: 2px solid orange;
+  margin: 0 3px;
+}
+
+.navbar .collapse .navbar-nav .nav-item .nav-link {
+  display: grid;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 800;
+  color: gray;
+  padding: 14px 24px;
+}
+
+.navbar .collapse .navbar-nav .nav-item .nav-link span {
+  text-transform: lowercase;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.navbar .collapse .navbar-nav .nav-item .input-group {
+  padding: 16px 0;
+}
+
+.navbar .collapse .navbar-nav .nav-item .input-group .form-control {
+  border: 0;
+  text-align: center;
+  color: #a2a2a2;
+}
+
+.navbar .collapse .navbar-nav .nav-item .input-group button {
+  border: none;
+  color: #a2a2a2;
+}
+
+.home {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+.home .articles {
+  margin-bottom: 150px;
+}
+
+.home .articles h6 {
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-size: contain;
+  padding-left: 37px;
+  background-position-y: -1px;
+  display: inline-block;
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+
+.home .articles .phone h6 {
+  background-image: url(/images/phone.png);
+}
+
+.home .articles .settings h6 {
+  background-image: url(/images/settings.png);
+}
+
+.home .articles .magic h6 {
+  background-image: url(/images/magic.png);
+}
+
+.home .quote {
+  margin-bottom: 100px;
+}
+
+.home .quote h3 {
+  font-size: 21px;
+  text-align: center;
+  padding: 0 100px;
+  margin-bottom: 25px;
+  color: #a2a2a2;
+}
+
+.home .quote h5 {
+  text-align: center;
+  font-style: italic;
+  color: #a2a2a2;
+  margin: 0;
+}
+
+.home .quote h5 a {
+  color: orange;
+  text-decoration: underline;
+}
+
+.home .title {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.home .title h4 {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 20px;
+}
+
+.home .title div {
+  display: flex;
+  flex: 1;
+  height: 2px;
+  background: black;
+  margin: 13px 0 0 15px;
+}
+
+.home .news h4 {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 20px;
+}
+
+.home .purchase {
+  background: #dcdcc363;
+  padding: 50px 0;
+}
+
+.home .purchase .btn-purchase {
+  background: #f7c825;
+  color: white;
+  padding: 20px 50px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
