@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="061d109a-6959-463f-add0-0905c9aaf586" name="Default Changelist" comment="training2 complete">
-      <change afterPath="$PROJECT_DIR$/resources/sass/psd2/home.scss" afterDir="false" />
+    <list default="true" id="061d109a-6959-463f-add0-0905c9aaf586" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/single-arrow-left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/single-arrow-right.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/psd2/footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/psd2/footer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/psd2/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/psd2/header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/psd2/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/psd2/home.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/psd2/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/psd2/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/psd2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/psd2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/psd2/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/psd2/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/psd2/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/psd2/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/psd2/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/psd2/index.blade.php" afterDir="false" />
     </list>
@@ -18,9 +23,28 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/sass/psd2/home.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="215" column="26" lean-forward="true" selection-start-line="215" selection-start-column="26" selection-end-line="215" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/psd2/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="110" column="33" selection-start-line="110" selection-start-column="33" selection-end-line="110" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -31,8 +55,62 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>media</find>
+      <find>h5</find>
+      <find>reasons</find>
+      <find>articl</find>
+      <find>btn</find>
+      <find>quote</find>
+      <find>url(</find>
+      <find>variable-width</find>
+      <find>url</find>
+      <find>arrow-left</find>
+      <find>template</find>
+      <find>card</find>
+      <find>collapse</find>
+      <find>button</find>
+      <find>hover</find>
+      <find>menu</find>
+      <find>.menu</find>
+      <find>row</find>
+      <find>mini-menu</find>
+      <find>search</find>
+      <find>carousel</find>
+      <find>title</find>
+      <find>footer</find>
+      <find>social</find>
+    </findStrings>
+    <dirStrings>
+      <dir>D:\vhosts\shop-laravel\resources</dir>
+      <dir>D:\vhosts\shop-laravel\resources\sass\psd</dir>
+      <dir>D:\vhosts\shop-laravel\resources\views</dir>
+      <dir>D:\vhosts\shop-laravel\resources\sass</dir>
+    </dirStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/resources/views/layouts/psd2.blade.php" />
+        <option value="$PROJECT_DIR$/resources/sass/psd2/index.scss" />
+        <option value="$PROJECT_DIR$/resources/views/psd2/header.blade.php" />
+        <option value="$PROJECT_DIR$/resources/sass/psd2/header.scss" />
+        <option value="$PROJECT_DIR$/resources/views/psd2/footer.blade.php" />
+        <option value="$PROJECT_DIR$/resources/sass/psd2/footer.scss" />
+        <option value="$PROJECT_DIR$/resources/views/psd2/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/sass/psd2/home.scss" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -135,8 +213,88 @@
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
     </include_path>
   </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-4" />
+    <option name="width" value="734" />
+    <option name="height" value="846" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="sass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="sass" type="462c0819:PsiDirectoryNode" />
+              <item name="psd2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="psd2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shop-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shop-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
@@ -156,19 +314,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\vhosts\shop-laravel\resources\sass\psd2" />
-      <recent name="D:\vhosts\shop-laravel\resources\views\psd2" />
-      <recent name="D:\vhosts\shop-laravel\resources\views\layouts" />
-      <recent name="D:\vhosts\shop-laravel\resources\views\psd" />
-      <recent name="D:\vhosts\shop-laravel\resources\sass\psd\pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\vhosts\shop-laravel\public\images" />
       <recent name="D:\vhosts\shop-laravel\public\images\psd" />
       <recent name="D:\vhosts\shop-laravel\resources\js" />
       <recent name="D:\vhosts\shop-laravel\resources\views\psd" />
       <recent name="D:\vhosts\shop-laravel\resources\views\admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\vhosts\shop-laravel\public\images" />
+      <recent name="D:\vhosts\shop-laravel\resources\sass\psd2" />
+      <recent name="D:\vhosts\shop-laravel\resources\views\psd2" />
+      <recent name="D:\vhosts\shop-laravel\resources\views\layouts" />
+      <recent name="D:\vhosts\shop-laravel\resources\views\psd" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -269,8 +427,66 @@
       <option name="project" value="LOCAL" />
       <updated>1571679885682</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="started new psd">
+      <created>1571929338693</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1571929338693</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="28322000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-4" y="0" width="734" height="846" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.37537092" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32614556" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32469305" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5028653" side_tool="true" weight="0.20350404" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49713466" visible="true" weight="0.24438202" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20487106" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32749325" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32469305" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3287858" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33692724" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -281,6 +497,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -297,6 +519,99 @@
     <MESSAGE value="huge refactoring" />
     <MESSAGE value="training3 complete and added examples of bootstrap grid" />
     <MESSAGE value="psd slicing" />
-    <option name="LAST_COMMIT_MESSAGE" value="psd slicing" />
+    <MESSAGE value="started new psd" />
+    <option name="LAST_COMMIT_MESSAGE" value="started new psd" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/public/images/background-yellow.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/psd2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sass/psd/pages/home/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/psd/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="348" column="10" lean-forward="true" selection-start-line="292" selection-start-column="7" selection-end-line="348" selection-end-column="10" />
+          <folding>
+            <element signature="e#9925#10299#0#HTML" />
+            <element signature="e#10323#10697#0#HTML" />
+            <element signature="e#10721#11095#0#HTML" />
+            <element signature="e#11119#11494#0#HTML" />
+            <element signature="e#11578#12794#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/psd/single-arrow-left.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/psd2/header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/psd2/footer.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sass/psd2/footer.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sass/psd2/header.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#1975#2113#0" />
+            <element signature="e#2615#2758#0" />
+            <element signature="e#2779#2993#0" />
+            <element signature="e#3016#3157#0" />
+            <element signature="e#3188#3830#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sass/psd2/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/psd2/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="110" column="33" selection-start-line="110" selection-start-column="33" selection-end-line="110" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sass/psd2/home.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="215" column="26" lean-forward="true" selection-start-line="215" selection-start-column="26" selection-end-line="215" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

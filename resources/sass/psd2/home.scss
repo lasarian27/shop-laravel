@@ -1,9 +1,38 @@
 .home {
-    margin-top: 30px;
-    margin-bottom: 60px;
+    .carousel {
+        margin-bottom: 35px;
+        display: inline-block;
+        width: 100%;
+
+        .slider {
+            background: url(/images/slider.png);
+            background-size: cover;
+            min-height: 400px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+            background-position-y: bottom;
+
+            h3 {
+                font-size: 59px;
+                color: #555555;
+                font-weight: 400;
+            }
+
+            .subtext {
+                background: url(/images/background-yellow.png) no-repeat;
+                padding: 27px;
+                background-size: contain;
+                background-position-y: center;
+                color: white;
+            }
+        }
+    }
 
     .articles {
-        margin-bottom: 150px;
+        margin-bottom: 35px;
 
         h6 {
             background-repeat: no-repeat;
@@ -13,32 +42,58 @@
             background-position-y: -1px;
             display: inline-block;
             margin-bottom: 30px;
-            font-size: 22px;
+            font-size: 18px;
         }
 
-        .phone h6 {
-            background-image: url(/images/phone.png);
+        .phone {
+            > div {
+                font-size: 13px;
+            }
+
+            h6 {
+                background-image: url(/images/phone.png);
+            }
         }
 
-        .settings h6 {
-            background-image: url(/images/settings.png);
-        }
+        .settings {
+            > div {
+                font-size: 13px;
+            }
 
-        .magic h6 {
-            background-image: url(/images/magic.png);
+            h6 {
+                background-image: url(/images/settings.png);
+            }
+        }
+        .magic {
+            > div {
+                font-size: 13px;
+            }
+
+            h6 {
+                background-image: url(/images/magic.png);
+            }
         }
     }
 
-
     .quote {
-        margin-bottom: 100px;
+        margin-bottom: 65px;
+        border-top: 2px solid #e9e9e9;
+        border-bottom: 2px solid #e9e9e9;
+        background: #f5f5f5;
+        text-align: center;
+        padding: 20px 0;
+
+        img {
+            padding-bottom: 25px;
+        }
 
         h3 {
-            font-size: 21px;
+            font-size: 16px;
             text-align: center;
-            padding: 0 100px;
+            padding: 0 130px;
             margin-bottom: 25px;
             color: #a2a2a2;
+            font-weight: 400;
         }
 
         h5 {
@@ -46,6 +101,8 @@
             font-style: italic;
             color: #a2a2a2;
             margin: 0;
+            font-size: 14px;
+            font-family: Georgia;
 
             a {
                 color: orange;
@@ -56,41 +113,199 @@
 
     .title {
         display: flex;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
 
         h4 {
             text-transform: uppercase;
             margin: 0;
-            font-size: 20px;
+            font-size: 18px;
         }
 
         div {
             display: flex;
             flex: 1;
-            height: 2px;
-            background: black;
-            margin: 13px 0 0 15px;
+            height: 1px;
+            background: #f5f5f5;
         }
     }
 
+    .accordion {
+        .card {
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+
+            .card-header {
+                border: 0;
+                padding: 0;
+                background-color: transparent;
+
+                button {
+                    display: block;
+                    background-repeat: no-repeat;
+                    background-position-y: center;
+                    background-size: 22px;
+                    padding-left: 34px;
+                    color: black;
+                }
+            }
+
+            h2 {
+                background: url(/images/plus.png);
+                display: block;
+                background-repeat: no-repeat;
+                background-position-y: 10px;
+                background-position-x: right;
+                background-size: 22px;
+                color: black;
+            }
+        }
+
+        .collapse1 button {
+            background: url(/images/1back.png);
+        }
+
+        .collapse2 button {
+            background: url(/images/2back.png);
+        }
+
+        .collapse3 button {
+            background: url(/images/3back.png);
+        }
+
+        .collapse4 button {
+            background: url(/images/4back.png);
+        }
+
+        .collapse5 button {
+            background: url(/images/5back.png);
+        }
+    }
+
+    .parent-reason {
+        margin: 65px 0;
+    }
+    .reasons {
+        font-size: 13px;
+        padding-bottom: 20px;
+    }
+
     .news {
-        h4 {
-            text-transform: uppercase;
-            margin: 0;
-            font-size: 20px;
+        .news-container {
+            display: flex;
+            margin-bottom: 25px;
+
+            h4 {
+                background-image: url(/images/file.png);
+                background-repeat: no-repeat;
+                background-position-y: center;
+                background-position: 0;
+                background-size: contain;
+                padding-left: 25px;
+                display: inline-block;
+                font-size: 18px;
+                text-transform: uppercase;
+                margin: 0;
+            }
+
+            .line {
+                display: flex;
+                height: 1px;
+                background: #f5f5f5;
+                margin: 0 10px;
+                flex: 0.7;
+            }
+
+            .buttons {
+                display: flex;
+                flex: 0.3;
+
+                .arrow-right {
+                    background: #f7c925 url(/images/single-arrow-right.png) no-repeat;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    background-size: 8px;
+                    background-position-y: center;
+                    background-position-x: center;
+                    outline: none;
+                    border: none;
+                }
+
+                .arrow-left {
+                    background: #f7c925 url(/images/single-arrow-left.png) no-repeat;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    background-size: 8px;
+                    background-position-y: center;
+                    background-position-x: center;
+                    outline: none;
+                    border: none;
+                    margin-right: 2px;
+                }
+            }
+
+        }
+
+        .item {
+            .image {
+                background: url(/images/back.png);
+                min-height: 166px;
+                position: relative;
+                margin-bottom: 15px;
+
+                span {
+                    position: absolute;
+                    bottom: 0;
+                    font-size: 11px;
+                    background: #f7c925;
+                    color: white;
+                    padding: 1px 10px;
+                }
+            }
+
+            h5 {
+                font-family: Arial;
+                font-size: 13px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .text {
+                font-size: 13px;
+            }
+
         }
     }
 
     .purchase {
-        background: #dcdcc363;
+        border-top: 2px solid #e9e9e9;
+        border-bottom: 2px solid #e9e9e9;
+        background: #f5f5f5;
         padding: 50px 0;
 
+        h3 {
+            font-size: 26px;
+            color: #747474;
+            font-weight: 500;
+            display: inline;
+        }
+
+        h6 {
+            margin: 0;
+            font-size: 15px;
+            color: #747474;
+        }
+
         .btn-purchase {
-            background: #f7c825;
+            border-bottom: 3px solid #e9b40a;
+            background: #f8d04f;
+            font-size: 18px;
+            font-weight: bold;
             color: white;
-            padding: 20px 50px;
+            padding: 14px 50px;
             border-radius: 5px;
-            font-weight: 700;
         }
     }
 }
